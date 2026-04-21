@@ -9,7 +9,9 @@
 script = ExtResource("1_ucweq")
 stats = ExtResource("2_1ie0h")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1957053658]
+[node name="Node2D" type="Node2D" parent="." unique_id=1433583579]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1957053658]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933241358]
 

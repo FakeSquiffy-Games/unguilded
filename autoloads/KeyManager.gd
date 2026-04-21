@@ -67,9 +67,7 @@ func _resolve_spell(spell: SpellData, player: Player) -> void:
 	match spell.activation_type:
 		SpellData.SpellType.INSTANT:
 			if player.stats.spend_mana(spell.mana_cost):
-				# Spawn effect at player position
-				if spell.projectile_scene:
-					player.wand.try_fire(player.get_global_mouse_position())
+				player.wand.fire_raw(player.get_global_mouse_position())
 		SpellData.SpellType.EQUIP_WAND:
 			if player.stats.spend_mana(spell.mana_cost):
 				player.wand.equip_spell(spell)

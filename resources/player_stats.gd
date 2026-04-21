@@ -9,6 +9,10 @@ extends Resource
 var hp: float = max_hp
 var mana: float = max_mana
 
+func init() -> void:
+	hp = max_hp
+	mana = max_mana
+	
 func spend_mana(amount: float) -> bool:
 	if mana < amount:
 		return false

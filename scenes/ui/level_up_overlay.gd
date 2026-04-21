@@ -15,10 +15,21 @@ func _on_level_up(_level: int) -> void:
 	_populate_offers()
 	show()
 
+func _close_overlay() -> void:
+	hide()
+	get_tree().paused = false
+
+func _on_offer_chosen(entity: KeyEntity) -> void:
+	KeyManager.register(entity)
+	_close_overlay()
+
 func _populate_offers() -> void:
 	for child in offer_container.get_children():
 		child.queue_free()
 	var pool := SpellRegistry.get_random_offers(offers_per_level)
+	if pool.is_empty():
+		_close_overlay()
+		return
 	for offer: KeyEntity in pool:
 		var btn := Button.new()
 		btn.text = "[%s]  %s  (%d mana)" % [
@@ -28,8 +39,3 @@ func _populate_offers() -> void:
 		]
 		btn.pressed.connect(_on_offer_chosen.bind(offer))
 		offer_container.add_child(btn)
-
-func _on_offer_chosen(entity: KeyEntity) -> void:
-	KeyManager.register(entity)
-	hide()
-	get_tree().paused = false

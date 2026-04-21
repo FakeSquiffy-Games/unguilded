@@ -5,6 +5,9 @@ var direction: Vector2 = Vector2.RIGHT
 var speed: float = 400.0
 var damage: float = 10.0
 
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+	
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 

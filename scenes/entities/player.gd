@@ -19,6 +19,8 @@ func _ready() -> void:
 	SignalBus.mana_changed.emit(stats.mana, stats.max_mana)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if get_tree().paused:
+		return
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			move_target = get_global_mouse_position()
@@ -26,9 +28,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			wand.try_fire(get_global_mouse_position())
 
-#func _unhandled_key_input(event: InputEventKey) -> void:
-	#if event.pressed and not event.is_echo():
-		#KeyManager.handle_key(event.keycode, self)
+func _unhandled_key_input(event: InputEvent) -> void:
+	if get_tree().paused:
+		return
+	if event.pressed and not event.is_echo():
+		KeyManager.handle_key(event.keycode, self)
 
 func _physics_process(_delta: float) -> void:
 	if not _moving:
