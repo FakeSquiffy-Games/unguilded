@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://dm0o20t4xnxgs"]
 
+[ext_resource type="Script" uid="uid://tlucd1dw483d" path="res://scenes/ui/level_up_overlay.gd" id="1_xmgam"]
+
 [node name="LevelUpOverlay" type="CanvasLayer" unique_id=2086091150]
+script = ExtResource("1_xmgam")
+
+[node name="Panel" type="Panel" parent="." unique_id=1178107429]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=134460042]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1226118590]
+layout_mode = 2
+text = "Choose a key"
+
+[node name="OfferContainer" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=1232092083]
+layout_mode = 2

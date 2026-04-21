@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 KeyManager="*uid://cxogxtp5xq3kk"
 SignalBus="*uid://bwjh02lq6ind"
 ChainSpellRegistry="*uid://c8gwpxxmwu015"
+SpellRegistry="*uid://dnist6233e7wk"
 
 [display]
 

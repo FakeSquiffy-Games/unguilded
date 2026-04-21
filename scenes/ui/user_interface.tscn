@@ -1,3 +1,28 @@
 [gd_scene format=3 uid="uid://dik8odk23frg1"]
 
+[ext_resource type="Script" uid="uid://nxm6lqduyvln" path="res://scenes/ui/user_interface.gd" id="1_284y0"]
+
 [node name="UserInterface" type="CanvasLayer" unique_id=194455329]
+script = ExtResource("1_284y0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=826845309]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HPBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=1646834601]
+layout_mode = 2
+
+[node name="ManaBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=622552838]
+layout_mode = 2
+
+[node name="WandLabel" type="Label" parent="VBoxContainer" unique_id=562328672]
+layout_mode = 2
+
+[node name="ChainLabel" type="Label" parent="VBoxContainer" unique_id=2092320473]
+layout_mode = 2
+
+[node name="KeyStrip" type="HBoxContainer" parent="VBoxContainer" unique_id=466649111]
+layout_mode = 2
+
+[node name="LevelUpButton" type="Button" parent="VBoxContainer" unique_id=1765647634]
+layout_mode = 2

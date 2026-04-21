@@ -75,7 +75,7 @@ func _resolve_spell(spell: SpellData, player: Player) -> void:
 				player.wand.equip_spell(spell)
 
 func _on_chain_timeout() -> void:
-	# NOTE
+	chain_buffer.clear()
 	SignalBus.chain_buffer_changed.emit([])
 
 # External modification API
