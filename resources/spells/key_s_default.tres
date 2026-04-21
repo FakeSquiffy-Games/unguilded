@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="KeyEntity" format=3 uid="uid://dm7bhgkqmylqd"]
+
+[ext_resource type="Script" uid="uid://cw6rs1hm4jlga" path="res://resources/effects/key_effects.gd" id="1_gow6j"]
+[ext_resource type="Script" uid="uid://brx3r3kxcw8sj" path="res://resources/key_entity.gd" id="2_8ybmw"]
+
+[resource]
+script = ExtResource("2_8ybmw")
+key = 83
+metadata/_custom_type_script = "uid://brx3r3kxcw8sj"

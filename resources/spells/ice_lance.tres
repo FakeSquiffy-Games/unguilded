@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://be7jhavmqe1d2"]
+
+[ext_resource type="Script" uid="uid://cie1k6ywlors6" path="res://resources/spell_data.gd" id="1_tfxp6"]
+
+[resource]
+script = ExtResource("1_tfxp6")
+spell_id = &"ice lance"
+display_name = "Ice Lance"
+mana_cost = 2.0
+activation_type = 1
+damage = 20.0
+speed = 500.0
+metadata/_custom_type_script = "uid://cie1k6ywlors6"

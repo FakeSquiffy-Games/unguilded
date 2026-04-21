@@ -12,6 +12,7 @@ var move_target: Vector2 = Vector2.ZERO
 var _moving: bool = false
 
 func _ready() -> void:
+	add_to_group("player")
 	if stats == null:
 		stats = PlayerStats.new()
 	SignalBus.hp_changed.emit(stats.hp, stats.max_hp)

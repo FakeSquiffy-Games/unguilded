@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="Vampire Survivors"
+run/main_scene="uid://cissy37pn3xf3"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-KeyManager="*uid://cxogxtp5xq3kk"
 SignalBus="*uid://bwjh02lq6ind"
 ChainSpellRegistry="*uid://c8gwpxxmwu015"
+KeyManager="*uid://cxogxtp5xq3kk"
 SpellRegistry="*uid://dnist6233e7wk"
 
 [display]
