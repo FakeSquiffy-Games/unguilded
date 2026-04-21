@@ -13,3 +13,5 @@
 [node name="Wand" parent="." unique_id=635330315 instance=ExtResource("2_08t41")]
 
 [node name="ManaTimer" type="Timer" parent="." unique_id=517768462]
+
+[connection signal="timeout" from="ManaTimer" to="Wand" method="_on_mana_timer_timeout"]

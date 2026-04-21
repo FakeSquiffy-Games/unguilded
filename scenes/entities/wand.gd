@@ -31,3 +31,7 @@ func equip_spell(spell: SpellData) -> void:
 func clear_spell() -> void:
 	equipped_spell = null
 	SignalBus.wand_spell_changed.emit(null)
+
+
+func _on_mana_timer_timeout() -> void:
+	pass # Replace with function body.
