@@ -4,3 +4,5 @@
 
 [node name="Wand" type="Node2D" unique_id=635330315]
 script = ExtResource("1_e048b")
+
+[node name="FirePoint" type="Marker2D" parent="." unique_id=135955107]
