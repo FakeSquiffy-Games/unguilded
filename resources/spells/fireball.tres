@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://bnfklwcilguiv"]
 
+[ext_resource type="PackedScene" uid="uid://cqmqx45y0bcpt" path="res://scenes/entities/projectile.tscn" id="1_mvy0l"]
 [ext_resource type="Script" uid="uid://cie1k6ywlors6" path="res://resources/spell_data.gd" id="1_r2nu1"]
 
 [resource]
@@ -7,6 +8,7 @@ script = ExtResource("1_r2nu1")
 spell_id = &"fireball"
 display_name = "Fireball"
 mana_cost = 20.0
+projectile_scene = ExtResource("1_mvy0l")
 damage = 35.0
 speed = 300.0
 metadata/_custom_type_script = "uid://cie1k6ywlors6"

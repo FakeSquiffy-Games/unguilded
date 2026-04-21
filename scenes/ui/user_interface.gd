@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var hp_bar: TextureProgressBar = $VBoxContainerx/HPBar
-@onready var mana_bar: TextureProgressBar = $VBoxContainer/ManaBar
+@onready var hp_bar: ProgressBar = $VBoxContainer/HPBar
+@onready var mana_bar: ProgressBar = $VBoxContainer/ManaBar
 @onready var wand_label: Label = $VBoxContainer/WandLabel
 @onready var chain_label: Label = $VBoxContainer/ChainLabel
 @onready var key_strip: HBoxContainer = $VBoxContainer/KeyStrip

@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://n4vrxhwqco6h"]
 
+[ext_resource type="PackedScene" uid="uid://cqmqx45y0bcpt" path="res://scenes/entities/projectile.tscn" id="1_6b7km"]
 [ext_resource type="Script" uid="uid://cie1k6ywlors6" path="res://resources/spell_data.gd" id="1_fvfn6"]
 
 [resource]
 script = ExtResource("1_fvfn6")
+projectile_scene = ExtResource("1_6b7km")
 metadata/_custom_type_script = "uid://cie1k6ywlors6"

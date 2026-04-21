@@ -6,13 +6,13 @@
 script = ExtResource("1_284y0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=826845309]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 421.0
+offset_bottom = 322.0
 
-[node name="HPBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=1646834601]
+[node name="HPBar" type="ProgressBar" parent="VBoxContainer" unique_id=1586185642]
 layout_mode = 2
 
-[node name="ManaBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=622552838]
+[node name="ManaBar" type="ProgressBar" parent="VBoxContainer" unique_id=106310968]
 layout_mode = 2
 
 [node name="WandLabel" type="Label" parent="VBoxContainer" unique_id=562328672]
@@ -26,3 +26,4 @@ layout_mode = 2
 
 [node name="LevelUpButton" type="Button" parent="VBoxContainer" unique_id=1765647634]
 layout_mode = 2
+text = "LEVEL UP"

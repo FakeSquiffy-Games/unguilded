@@ -38,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 	if not _moving:
 		velocity = Vector2.ZERO
 		move_and_slide()
+		$Animation/AnimationPlayer.play("idle")
 		return
 	var diff := move_target - global_position
 	if diff.length() <= arrival_threshold:
@@ -45,6 +46,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 	else:
 		velocity = diff.normalized() * move_speed
+		$Animation/AnimationPlayer.play("walking_down")
 	move_and_slide()
 
 func _on_mana_timer_timeout() -> void:

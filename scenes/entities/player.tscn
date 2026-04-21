@@ -3,17 +3,123 @@
 [ext_resource type="Script" uid="uid://cdqd7h2eexyns" path="res://scenes/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Resource" uid="uid://vciohf0dehlt" path="res://resources/player_stats.tres" id="2_1ie0h"]
 [ext_resource type="PackedScene" uid="uid://b4pn4rft2mt7" path="res://scenes/entities/wand.tscn" id="2_08t41"]
-[ext_resource type="Resource" uid="uid://n4vrxhwqco6h" path="res://resources/spells/default_shot.tres" id="4_42nxq"]
+[ext_resource type="Texture2D" uid="uid://creltb8ib4gyh" path="res://assets/placeholder_assets/Dash.png" id="3_5u6hq"]
+
+[sub_resource type="Animation" id="Animation_5u6hq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_d4qa6"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_42nxq"]
+resource_name = "walking_down"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ss7kx"]
+_data = {
+&"RESET": SubResource("Animation_5u6hq"),
+&"idle": SubResource("Animation_d4qa6"),
+&"walking_down": SubResource("Animation_42nxq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u6hq"]
+size = Vector2(10, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=1485512283]
 script = ExtResource("1_ucweq")
 stats = ExtResource("2_1ie0h")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1433583579]
+[node name="Animation" type="Node2D" parent="." unique_id=1433583579]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1957053658]
+[node name="Sprite2D" type="Sprite2D" parent="Animation" unique_id=1957053658]
+position = Vector2(0, -19)
+texture = ExtResource("3_5u6hq")
+hframes = 8
+vframes = 8
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" unique_id=1578293295]
+libraries/ = SubResource("AnimationLibrary_ss7kx")
+autoplay = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933241358]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_5u6hq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=934032469]
 
@@ -22,6 +128,5 @@ wait_time = 0.5
 autostart = true
 
 [node name="Wand" parent="." unique_id=635330315 instance=ExtResource("2_08t41")]
-default_spell = ExtResource("4_42nxq")
 
 [connection signal="timeout" from="ManaTimer" to="Wand" method="_on_mana_timer_timeout"]
