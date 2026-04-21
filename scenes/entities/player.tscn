@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ctc57wxfdeinf"]
+
+[ext_resource type="PackedScene" uid="uid://b4pn4rft2mt7" path="res://scenes/entities/wand.tscn" id="2_08t41"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1485512283]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1957053658]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933241358]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=934032469]
+
+[node name="Wand" parent="." unique_id=635330315 instance=ExtResource("2_08t41")]
+
+[node name="ManaTimer" type="Timer" parent="." unique_id=517768462]

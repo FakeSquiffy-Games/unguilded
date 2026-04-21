@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b4pn4rft2mt7"]
+
+[ext_resource type="Script" uid="uid://c1tumi46yt6i5" path="res://scenes/entities/wand.gd" id="1_e048b"]
+
+[node name="Wand" type="Node2D" unique_id=635330315]
+script = ExtResource("1_e048b")

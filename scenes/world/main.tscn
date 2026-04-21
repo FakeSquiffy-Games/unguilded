@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cissy37pn3xf3"]
+
+[ext_resource type="PackedScene" uid="uid://ctc57wxfdeinf" path="res://scenes/entities/player.tscn" id="1_0wkb6"]
+[ext_resource type="Script" uid="uid://cdqd7h2eexyns" path="res://scenes/entities/player.gd" id="1_wbupf"]
+[ext_resource type="PackedScene" uid="uid://dik8odk23frg1" path="res://scenes/ui/user_interface.tscn" id="2_f8fyy"]
+[ext_resource type="PackedScene" uid="uid://dm0o20t4xnxgs" path="res://scenes/ui/level_up_overlay.tscn" id="3_wbupf"]
+
+[node name="Main" type="Node2D" unique_id=1429375156]
+script = ExtResource("1_wbupf")
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." unique_id=1485512283 instance=ExtResource("1_0wkb6")]
+
+[node name="UserInterface" parent="." unique_id=194455329 instance=ExtResource("2_f8fyy")]
+
+[node name="LevelUpOverlay" parent="." unique_id=2086091150 instance=ExtResource("3_wbupf")]
