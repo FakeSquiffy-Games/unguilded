@@ -14,6 +14,12 @@ config/name="Vampire Survivors"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+KeyManager="*uid://cxogxtp5xq3kk"
+SignalBus="*uid://bwjh02lq6ind"
+SpellRegistry="*uid://dnist6233e7wk"
+
 [display]
 
 window/size/viewport_width=1280
