@@ -2,7 +2,6 @@
 extends Node
 ## Stateless math Autoload for resolving combat outcomes.
 
-## Plain data class to hold the results of a combat calculation
 class CombatResult:
 	var final_damage: float = 0.0
 	var knockback: Vector2 = Vector2.ZERO
@@ -13,8 +12,17 @@ class CombatResult:
 		knockback = p_knockback
 		triggered_hitstun = p_hitstun
 
-## Stubbed resolve function for now. Will be fleshed out in Phase 3.
-func resolve(attacker_stats: StatBlock, skill: SkillAction, defender_stats: StatBlock) -> CombatResult:
-	# Placeholder logic
-	var damage := skill.base_damage * attacker_stats.damage_multiplier
-	return CombatResult.new(damage, Vector2.ZERO, false)
+func resolve(attacker_stats: StatBlock, skill: SkillAction, defender_stats: StatBlock, attack_direction: Vector2 = Vector2.ZERO) -> CombatResult:
+	# Calculate base damage with multipliers
+	var damage: float = skill.base_damage * attacker_stats.damage_multiplier
+	
+	# Future-proofing: Armor/Mitigation math would go here using defender_stats.
+	var final_damage: float = maxf(0.0, damage)
+	
+	# Determine Hitstun: If an attack hits with heavy force (>150), trigger a stun state.
+	var triggers_hitstun: bool = skill.knockback_force > 150.0
+	
+	# Apply directional vector to the raw knockback force
+	var applied_knockback: Vector2 = attack_direction.normalized() * skill.knockback_force
+	
+	return CombatResult.new(final_damage, applied_knockback, triggers_hitstun)
