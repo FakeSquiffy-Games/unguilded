@@ -3,18 +3,28 @@ extends CharacterBody2D
 
 @onready var stat_manager: StatManager = $StatManager
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var state_chart: StateChart = $StateChart
+@onready var input_handler: InputHandler = $InputHandler
 
 var current_health: int
 var current_energy: float
 
+# FSM & Timing
+var _state_timer_tween: Tween
+var active_skill: SkillAction # Set by WeaponHandler in Phase 5
+
+# Chrono-Switch
+var pending_slot_key: int = -1
+var chrono_tween: Tween
+const CHRONO_TIME_SCALE: float = 0.3
+
 func _ready() -> void:
 	stat_manager.stats_changed.connect(_on_stats_changed)
+	_connect_state_chart()
 	
-	# Initialize resource pools
 	current_health = stat_manager.final_max_health
 	current_energy = stat_manager.final_energy_max
 	
-	# Notify HUD of initial state
 	Events.player_health_changed.emit(current_health, stat_manager.final_max_health)
 	Events.player_energy_changed.emit(current_energy, stat_manager.final_energy_max)
 
@@ -23,16 +33,20 @@ func _physics_process(delta: float) -> void:
 	_handle_rotation()
 	_handle_energy_regen(delta)
 
+func _process(_delta: float) -> void:
+	_handle_chrono_switch()
+
+# ----------------------------------------------------------------------
+# MOVEMENT & STATS
+# ----------------------------------------------------------------------
+
 func _handle_movement() -> void:
-	# Using Godot's built-in UI actions for WASD/Arrow keys
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * stat_manager.final_speed
 	move_and_slide()
 
 func _handle_rotation() -> void:
 	var mouse_pos := get_global_mouse_position()
-	# Rotate the sprite to face the mouse, keeping the collision/body axis fixed.
-	# Subtracting PI/2 assumes the sprite is drawn facing "up". Adjust if drawn facing "right".
 	sprite.rotation = (mouse_pos - global_position).angle() + (PI / 2.0)
 
 func _handle_energy_regen(delta: float) -> void:
@@ -41,7 +55,93 @@ func _handle_energy_regen(delta: float) -> void:
 		Events.player_energy_changed.emit(current_energy, stat_manager.final_energy_max)
 
 func _on_stats_changed() -> void:
-	# Clamp health if max health drops below current health (e.g., losing a buff)
 	if current_health > stat_manager.final_max_health:
 		current_health = stat_manager.final_max_health
 		Events.player_health_changed.emit(current_health, stat_manager.final_max_health)
+
+# ----------------------------------------------------------------------
+# CHRONO-SWITCH SYSTEM
+# ----------------------------------------------------------------------
+
+func _handle_chrono_switch() -> void:
+	var slot_pressed := -1
+	if Input.is_action_just_pressed("weapon_slot_1"): slot_pressed = 0
+	elif Input.is_action_just_pressed("weapon_slot_2"): slot_pressed = 1
+	elif Input.is_action_just_pressed("weapon_slot_3"): slot_pressed = 2
+
+	if slot_pressed != -1:
+		pending_slot_key = slot_pressed
+		_animate_time_scale(CHRONO_TIME_SCALE)
+
+	var slot_released := -1
+	if Input.is_action_just_released("weapon_slot_1") and pending_slot_key == 0: slot_released = 0
+	elif Input.is_action_just_released("weapon_slot_2") and pending_slot_key == 1: slot_released = 1
+	elif Input.is_action_just_released("weapon_slot_3") and pending_slot_key == 2: slot_released = 2
+
+	if slot_released != -1:
+		print("Committed weapon swap to slot: ", pending_slot_key)
+		# WeaponHandler.set_active_weapon(pending_slot_key) # Phase 5 Stub
+		pending_slot_key = -1
+		
+		# Only return to normal time if no other slot keys are held
+		if not (Input.is_action_pressed("weapon_slot_1") or Input.is_action_pressed("weapon_slot_2") or Input.is_action_pressed("weapon_slot_3")):
+			_animate_time_scale(1.0)
+
+func _animate_time_scale(target: float) -> void:
+	if chrono_tween and chrono_tween.is_running():
+		chrono_tween.kill()
+	# Time scale manipulation bypasses standard pause rules automatically
+	chrono_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	chrono_tween.tween_property(Engine, "time_scale", target, 0.15)
+
+# ----------------------------------------------------------------------
+# STATE CHART & COMBAT
+# ----------------------------------------------------------------------
+
+func _connect_state_chart() -> void:
+	# These node paths match the EXACT names of the states created in step 2.
+	state_chart.get_node("CombatRoot/Neutral").state_entered.connect(_on_neutral_entered)
+	state_chart.get_node("CombatRoot/Startup").state_entered.connect(_on_startup_entered)
+	state_chart.get_node("CombatRoot/Active").state_entered.connect(_on_active_entered)
+	state_chart.get_node("CombatRoot/Recovery/Cooldown").state_entered.connect(_on_cooldown_entered)
+	state_chart.get_node("CombatRoot/Recovery/CancelWindow").state_entered.connect(_on_cancel_window_entered)
+	state_chart.get_node("CombatRoot/Hitstun").state_entered.connect(_on_hitstun_entered)
+
+func _start_state_timer(duration: float, event_name: String) -> void:
+	if _state_timer_tween: _state_timer_tween.kill()
+	_state_timer_tween = create_tween()
+	_state_timer_tween.tween_callback(func(): state_chart.send_event(event_name)).set_delay(duration)
+
+func _on_neutral_entered() -> void:
+	print("[FSM] Neutral")
+	if _state_timer_tween: _state_timer_tween.kill()
+
+func _on_startup_entered() -> void:
+	print("[FSM] Startup")
+	# Hardcoded for test. Phase 5 uses: active_skill.startup_frames / 60.0
+	_start_state_timer(0.2, "skill_active")
+
+func _on_active_entered() -> void:
+	print("[FSM] Active")
+	_start_state_timer(0.2, "skill_recovery")
+
+func _on_cooldown_entered() -> void:
+	print("[FSM] Cooldown")
+	_start_state_timer(0.2, "cancel_window_open")
+
+func _on_cancel_window_entered() -> void:
+	print("[FSM] Cancel Window")
+	Events.cancel_window_open.emit()
+	_start_state_timer(0.2, "skill_complete")
+
+func _on_hitstun_entered() -> void:
+	print("[FSM] Hitstun")
+	if _state_timer_tween: _state_timer_tween.kill()
+	_start_state_timer(0.5, "hitstun_complete")
+
+# Temporary trigger to test FSM until Phase 5
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"): # Press Space to test
+		state_chart.send_event("skill_requested")
+	elif event.is_action_pressed("ui_cancel"): # Press Esc to test hitstun
+		state_chart.send_event("player_hit")
