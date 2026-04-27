@@ -4,6 +4,11 @@
 [ext_resource type="Script" uid="uid://cljnp7fge7giu" path="res://scenes/player/player.gd" id="1_lvxji"]
 [ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://components/stat_manager.gd" id="2_gmlin"]
 [ext_resource type="Resource" uid="uid://dh760056dhlk2" path="res://resources/stat_blocks/player_base_stats.tres" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://cghj37covskdw" path="res://scripts/player/input_handler.gd" id="5_5gtgg"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_qek5x"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_5gtgg"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="7_h17s1"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_je7p5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvxji"]
 radius = 20.0
@@ -22,4 +27,80 @@ script = ExtResource("2_gmlin")
 base_stats = ExtResource("3_gmlin")
 metadata/_custom_type_script = "uid://dvb7yux7fewm1"
 
+[node name="InputHandler" type="Node" parent="." unique_id=559745086]
+script = ExtResource("5_5gtgg")
+metadata/_custom_type_script = "uid://cghj37covskdw"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2095680796]
+
+[node name="StateChart" type="Node" parent="." unique_id=632740280]
+script = ExtResource("5_qek5x")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="CombatRoot" type="Node" parent="StateChart" unique_id=357334529]
+script = ExtResource("6_5gtgg")
+initial_state = NodePath("Neutral")
+
+[node name="ToHitstun" type="Node" parent="StateChart/CombatRoot" unique_id=2075904850]
+script = ExtResource("7_h17s1")
+to = NodePath("../Hitstun")
+event = &"player_hit"
+delay_in_seconds = "0.0"
+
+[node name="Neutral" type="Node" parent="StateChart/CombatRoot" unique_id=336091361]
+script = ExtResource("8_je7p5")
+
+[node name="ToStartup" type="Node" parent="StateChart/CombatRoot/Neutral" unique_id=1988935342]
+script = ExtResource("7_h17s1")
+to = NodePath("../../Startup")
+event = &"skill_requested"
+delay_in_seconds = "0.0"
+
+[node name="Startup" type="Node" parent="StateChart/CombatRoot" unique_id=1346919532]
+script = ExtResource("8_je7p5")
+
+[node name="ToActive" type="Node" parent="StateChart/CombatRoot/Startup" unique_id=1527060331]
+script = ExtResource("7_h17s1")
+to = NodePath("../../Active")
+event = &"skill_active"
+delay_in_seconds = "0.0"
+
+[node name="Active" type="Node" parent="StateChart/CombatRoot" unique_id=2047065779]
+script = ExtResource("8_je7p5")
+
+[node name="ToRecovery" type="Node" parent="StateChart/CombatRoot/Active" unique_id=239454720]
+script = ExtResource("7_h17s1")
+to = NodePath("../../Recovery")
+event = &"skill_recovery"
+delay_in_seconds = "0.0"
+
+[node name="Hitstun" type="Node" parent="StateChart/CombatRoot" unique_id=1336226014]
+script = ExtResource("8_je7p5")
+
+[node name="ToNeutral" type="Node" parent="StateChart/CombatRoot/Hitstun" unique_id=1329681924]
+script = ExtResource("7_h17s1")
+to = NodePath("../../Neutral")
+event = &"hitstun_complete"
+delay_in_seconds = "0.0"
+
+[node name="Recovery" type="Node" parent="StateChart/CombatRoot" unique_id=1186231353]
+script = ExtResource("6_5gtgg")
+initial_state = NodePath("Cooldown")
+
+[node name="Cooldown" type="Node" parent="StateChart/CombatRoot/Recovery" unique_id=1335407087]
+script = ExtResource("8_je7p5")
+
+[node name="ToCancelWindow" type="Node" parent="StateChart/CombatRoot/Recovery/Cooldown" unique_id=247291910]
+script = ExtResource("7_h17s1")
+to = NodePath("../../CancelWindow")
+event = &"cancel_window_open"
+delay_in_seconds = "0.0"
+
+[node name="CancelWindow" type="Node" parent="StateChart/CombatRoot/Recovery" unique_id=1764373287]
+script = ExtResource("8_je7p5")
+
+[node name="ToNeutral" type="Node" parent="StateChart/CombatRoot/Recovery/CancelWindow" unique_id=2076573044]
+script = ExtResource("7_h17s1")
+to = NodePath("../../../Neutral")
+event = &"skill_complete"
+delay_in_seconds = "0.0"
