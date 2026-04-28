@@ -10,6 +10,11 @@ signal player_energy_changed(current: float, maximum: float)
 signal enemy_died(enemy: Node)
 
 # Weapon / Input Signals
-signal skill_requested  # Fired when an input validates
-signal cancel_window_open  # Fired for UI visual feedback
-signal player_hit  # Fired when damage is taken
+signal skill_requested
+signal cancel_window_open
+signal player_hit
+
+# Progression & UI Signals
+signal cooldown_updated(slot_index: int, action_name: StringName, remaining: float, total: float)
+signal weapon_switched(slot_index: int)
+signal weapon_acquired(weapon: WeaponResource)
