@@ -21,7 +21,8 @@ func init_projectile(p_pool_name: StringName, p_pos: Vector2, p_dir: Vector2, p_
 	piercing = p_piercing
 	skill_data = p_skill
 	attacker_stats = p_stats
-	rotation = direction.angle() + (PI / 2.0) # Assuming sprite faces UP
+	rotation = direction.angle() + (PI / 2.0)
+	z_index = 10
 
 func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(direction * speed * delta)
