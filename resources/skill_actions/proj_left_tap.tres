@@ -9,3 +9,4 @@ startup_frames = 5
 recovery_frames = 15
 energy_cost = 5.0
 cooldown = 0.4
+base_damage = 15.0

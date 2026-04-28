@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillAction" format=3 uid="uid://bjehxhpsffykj"]
+
+[ext_resource type="Script" uid="uid://dw2jtjoqvhifr" path="res://resources/skill_action.gd" id="1_1ssdp"]
+
+[resource]
+script = ExtResource("1_1ssdp")
+skill_id = &"proj_r_tap"
+startup_frames = 8
+energy_cost = 15.0
+cooldown = 1.5
+base_damage = 25.0

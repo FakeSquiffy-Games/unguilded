@@ -33,11 +33,13 @@ func _ready() -> void:
 	Events.player_health_changed.emit(current_health, stat_manager.final_max_health)
 	Events.player_energy_changed.emit(current_energy, stat_manager.final_energy_max)
 	
-	# TEMPORARY PHASE 5 INIT: Load test weapon
+	# TEMPORARY INIT: Load test weapon
 	var start_weapon = load("res://resources/weapons/weapon_projectile.tres")
 	if start_weapon:
 		progression.add_weapon(start_weapon)
-		progression.unlock_slot(start_weapon.weapon_id, "left_hold") # Give hold for testing
+		progression.unlock_slot(start_weapon.weapon_id, "left_hold")
+		progression.unlock_slot(start_weapon.weapon_id, "right_tap")
+		progression.unlock_slot(start_weapon.weapon_id, "right_hold")
 		weapon_handler.weapon_slots[0] = start_weapon
 		weapon_handler.set_active_weapon(0)
 

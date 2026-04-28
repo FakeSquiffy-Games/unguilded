@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c4yc4jiu24b6v"]
+
+[ext_resource type="Script" uid="uid://b0wp7kxbxqtp7" path="res://scenes/projectiles/projectile_base.gd" id="1_iupiv"]
+[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="2_ckspq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wmxj"]
+
+[node name="ProjectileBase" type="CharacterBody2D" unique_id=2054169857]
+script = ExtResource("1_iupiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=547494064]
+shape = SubResource("CircleShape2D_5wmxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1456362360]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ckspq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=181213487]
