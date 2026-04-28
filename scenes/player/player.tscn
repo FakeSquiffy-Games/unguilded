@@ -15,9 +15,14 @@
 [ext_resource type="Script" uid="uid://bs5i1joa2arou" path="res://scripts/weapons/skill_executors/aoe_executor.gd" id="9_myrg7"]
 [ext_resource type="Script" uid="uid://cmxahl5becpx5" path="res://scripts/weapons/skill_executors/melee_executor.gd" id="10_kvlxm"]
 [ext_resource type="Script" uid="uid://dq1u0qhqy8ady" path="res://scripts/weapons/skill_executors/energy_executor.gd" id="11_uf5tr"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_kvlxm"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_uf5tr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvxji"]
 radius = 20.0
+
+[sub_resource type="Resource" id="Resource_lgqa7"]
+script = ExtResource("13_uf5tr")
 
 [node name="Player" type="CharacterBody2D" unique_id=338249272]
 script = ExtResource("1_lvxji")
@@ -63,6 +68,17 @@ script = ExtResource("11_uf5tr")
 metadata/_custom_type_script = "uid://dq1u0qhqy8ady"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2095680796]
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1253994028 node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("12_kvlxm")
+follow_mode = 2
+follow_target = NodePath("..")
+zoom = Vector2(1.2, 1.2)
+tween_resource = SubResource("Resource_lgqa7")
+follow_damping = true
+follow_damping_value = Vector2(0.15, 0.15)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="StateChart" type="Node" parent="." unique_id=632740280]
 script = ExtResource("5_qek5x")
