@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_1qjuf"]
 [ext_resource type="Script" uid="uid://cbhlthod0nwgh" path="res://scripts/arena/arena.gd" id="1_8trdl"]
+[ext_resource type="PackedScene" uid="uid://vqv6gkcfvxrr" path="res://scenes/enemies/enemy_complex.tscn" id="3_5tue2"]
+[ext_resource type="PackedScene" uid="uid://xc8gy1obmayc" path="res://scenes/enemies/enemy_simple.tscn" id="4_aj7ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8trdl"]
 size = Vector2(2200, 100)
@@ -79,8 +81,15 @@ position = Vector2(-1.6532186e-13, -900)
 position = Vector2(636.3961, -636.3961)
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1227517136]
+top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera" unique_id=1510093907]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_1qjuf")
+
+[node name="EnemyComplex" parent="." unique_id=2144712344 instance=ExtResource("3_5tue2")]
+position = Vector2(-809, -832)
+
+[node name="EnemySimple" parent="." unique_id=1483016287 instance=ExtResource("4_aj7ud")]
+position = Vector2(849, -819)

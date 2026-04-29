@@ -95,6 +95,10 @@ attack_secondary={
 ]
 }
 
+[limbo_ai]
+
+behavior_tree/user_task_dirs=PackedStringArray("res://scripts/enemies/bt_tasks")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

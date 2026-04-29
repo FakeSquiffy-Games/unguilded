@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://cljnp7fge7giu" path="res://scenes/player/player.gd" id="1_lvxji"]
-[ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://components/stat_manager.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://scripts/components/stat_manager.gd" id="2_gmlin"]
 [ext_resource type="Resource" uid="uid://dh760056dhlk2" path="res://resources/stat_blocks/player_base_stats.tres" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://cghj37covskdw" path="res://scripts/player/input_handler.gd" id="5_5gtgg"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_qek5x"]
@@ -19,19 +19,19 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_uf5tr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvxji"]
-radius = 20.0
+radius = 60.0
 
 [sub_resource type="Resource" id="Resource_lgqa7"]
 script = ExtResource("13_uf5tr")
 
-[node name="Player" type="CharacterBody2D" unique_id=338249272]
+[node name="Player" type="CharacterBody2D" unique_id=338249272 groups=["player"]]
 script = ExtResource("1_lvxji")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734321397]
-shape = SubResource("CircleShape2D_lvxji")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=846379245]
 texture = ExtResource("1_dovo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734321397]
+shape = SubResource("CircleShape2D_lvxji")
 
 [node name="StatManager" type="Node" parent="." unique_id=2013524261]
 script = ExtResource("2_gmlin")
