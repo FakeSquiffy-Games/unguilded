@@ -8,13 +8,9 @@
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_5gtgg"]
 [ext_resource type="Script" uid="uid://bbwdkqeuga087" path="res://scripts/components/progress_component.gd" id="6_je7p5"]
-[ext_resource type="Script" uid="uid://c5ves4xvv0x3v" path="res://scripts/player/weapon_handler.gd" id="7_fm80t"]
+[ext_resource type="Script" uid="uid://dvrxg41lasx6x" path="res://scripts/components/skill_handler.gd" id="7_gx1jg"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="7_h17s1"]
-[ext_resource type="Script" uid="uid://c5akaiajr2po1" path="res://scripts/weapons/skill_executors/projectile_executor.gd" id="8_fcs02"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_je7p5"]
-[ext_resource type="Script" uid="uid://bs5i1joa2arou" path="res://scripts/weapons/skill_executors/aoe_executor.gd" id="9_myrg7"]
-[ext_resource type="Script" uid="uid://cmxahl5becpx5" path="res://scripts/weapons/skill_executors/melee_executor.gd" id="10_kvlxm"]
-[ext_resource type="Script" uid="uid://dq1u0qhqy8ady" path="res://scripts/weapons/skill_executors/energy_executor.gd" id="11_uf5tr"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_kvlxm"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_uf5tr"]
 
@@ -46,26 +42,9 @@ metadata/_custom_type_script = "uid://cghj37covskdw"
 script = ExtResource("6_je7p5")
 metadata/_custom_type_script = "uid://bbwdkqeuga087"
 
-[node name="WeaponHandler" type="Node" parent="." unique_id=163009152 node_paths=PackedStringArray("progression")]
-script = ExtResource("7_fm80t")
-progression = NodePath("../ProgressionComponent")
-metadata/_custom_type_script = "uid://c5ves4xvv0x3v"
-
-[node name="ProjectileExecutor" type="Node" parent="WeaponHandler" unique_id=1334495222]
-script = ExtResource("8_fcs02")
-metadata/_custom_type_script = "uid://c5akaiajr2po1"
-
-[node name="AOEExecutor" type="Node" parent="WeaponHandler" unique_id=426203306]
-script = ExtResource("9_myrg7")
-metadata/_custom_type_script = "uid://bs5i1joa2arou"
-
-[node name="MeleeExecutor" type="Node" parent="WeaponHandler" unique_id=1527504738]
-script = ExtResource("10_kvlxm")
-metadata/_custom_type_script = "uid://cmxahl5becpx5"
-
-[node name="EnergyExecutor" type="Node" parent="WeaponHandler" unique_id=1892827024]
-script = ExtResource("11_uf5tr")
-metadata/_custom_type_script = "uid://dq1u0qhqy8ady"
+[node name="SkillHandler" type="Node" parent="." unique_id=244422374]
+script = ExtResource("7_gx1jg")
+metadata/_custom_type_script = "uid://dvrxg41lasx6x"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2095680796]
 

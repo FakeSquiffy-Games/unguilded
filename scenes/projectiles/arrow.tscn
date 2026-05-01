@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c5d4ci535m5mo"]
+
+[ext_resource type="Script" uid="uid://b0wp7kxbxqtp7" path="res://scenes/projectiles/projectile_base.gd" id="1_iyfe7"]
+[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="1_ugh5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyfe7"]
+size = Vector2(35, 10)
+
+[node name="Arrow" type="CharacterBody2D" unique_id=1595893087]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_iyfe7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1324435252]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.3, 0.1)
+texture = ExtResource("1_ugh5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=825055754]
+shape = SubResource("RectangleShape2D_iyfe7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1987717753]

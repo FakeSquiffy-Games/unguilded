@@ -6,14 +6,14 @@ extends CharacterBody2D
 @onready var state_chart: StateChart = $StateChart
 @onready var input_handler: InputHandler = $InputHandler
 @onready var progression: ProgressionComponent = $ProgressionComponent
-@onready var weapon_handler: WeaponHandler = $WeaponHandler
+@onready var skill_handler: SkillHandler = $SkillHandler
 
 var current_health: int
 var current_energy: float
 
 # FSM & Timing
 var _state_timer_tween: Tween
-var active_skill: SkillAction # Set by WeaponHandler in Phase 5
+var active_skill: SkillCommand # Set by WeaponHandler in Phase 5
 
 # Chrono-Switch
 var pending_slot_key: int = -1
@@ -33,15 +33,16 @@ func _ready() -> void:
 	Events.player_health_changed.emit(current_health, stat_manager.final_max_health)
 	Events.player_energy_changed.emit(current_energy, stat_manager.final_energy_max)
 	
-	# TEMPORARY INIT: Load test weapon
-	var start_weapon = load("res://resources/weapons/weapon_projectile.tres")
-	if start_weapon:
-		progression.add_weapon(start_weapon)
-		progression.unlock_slot(start_weapon.weapon_id, "left_hold")
-		progression.unlock_slot(start_weapon.weapon_id, "right_tap")
-		progression.unlock_slot(start_weapon.weapon_id, "right_hold")
-		weapon_handler.weapon_slots[0] = start_weapon
-		weapon_handler.set_active_weapon(0)
+	# Phase 8.5 TEMP INIT: Inject our new Command
+	var arrow_cmd = ProjectileCommand.new()
+	arrow_cmd.projectile_scene = load("res://scenes/projectiles/arrow.tscn")
+	arrow_cmd.speed = 1000.0
+	arrow_cmd.cooldown = 0.3
+	arrow_cmd.base_damage = 25.0
+	skill_handler.left_tap = arrow_cmd
+
+	# Wire up InputHandler to SkillHandler
+	input_handler.left_tap_triggered.connect(func(): _request_skill("left_tap"))
 
 func _physics_process(delta: float) -> void:
 	_handle_movement()
@@ -62,7 +63,8 @@ func _handle_movement() -> void:
 
 func _handle_rotation() -> void:
 	var mouse_pos := get_global_mouse_position()
-	sprite.rotation = (mouse_pos - global_position).angle() + (PI / 2.0)
+	# Face Left if mouse is on the left, Face Right if mouse is on the right
+	sprite.flip_h = mouse_pos.x < global_position.x
 
 func _handle_energy_regen(delta: float) -> void:
 	if current_energy < stat_manager.final_energy_max:
@@ -73,6 +75,13 @@ func _on_stats_changed() -> void:
 	if current_health > stat_manager.final_max_health:
 		current_health = stat_manager.final_max_health
 		Events.player_health_changed.emit(current_health, stat_manager.final_max_health)
+
+func _request_skill(action_name: String) -> void:
+	if not can_attack: return
+	var dir = (get_global_mouse_position() - global_position).normalized()
+	active_skill = skill_handler.try_execute_start(action_name, dir)
+	if active_skill:
+		state_chart.send_event("skill_requested")
 
 # ----------------------------------------------------------------------
 # CHRONO-SWITCH SYSTEM
@@ -95,7 +104,6 @@ func _handle_chrono_switch() -> void:
 
 	if slot_released != -1:
 		print("Committed weapon swap to slot: ", pending_slot_key)
-		weapon_handler.set_active_weapon(pending_slot_key) # Phase 5 Stub
 		pending_slot_key = -1
 		
 		# Only return to normal time if no other slot keys are held

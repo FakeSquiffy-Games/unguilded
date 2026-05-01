@@ -12,7 +12,7 @@ class CombatResult:
 		knockback = p_knockback
 		triggered_hitstun = p_hitstun
 
-func resolve(attacker_stats: StatBlock, skill: SkillAction, defender_stats: StatBlock, attack_direction: Vector2 = Vector2.ZERO) -> CombatResult:
+func resolve(attacker_stats: StatBlock, skill: SkillCommand, defender_stats: StatBlock, attack_direction: Vector2 = Vector2.ZERO) -> CombatResult:
 	# Calculate base damage with multipliers
 	var damage: float = skill.base_damage * attacker_stats.damage_multiplier
 	

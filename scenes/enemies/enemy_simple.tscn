@@ -1,50 +1,66 @@
 [gd_scene format=3 uid="uid://xc8gy1obmayc"]
 
-[ext_resource type="PackedScene" uid="uid://drnc805rrn3kl" path="res://scenes/enemies/enemy_base.tscn" id="1_e3xgn"]
+[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="2_qyvdh"]
 [ext_resource type="Script" uid="uid://bfgs1nihfxg1m" path="res://scripts/enemies/enemy_simple.gd" id="2_r5h47"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_cwp2g"]
+[ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://scripts/components/stat_manager.gd" id="3_ik4rd"]
+[ext_resource type="Resource" uid="uid://rcn5bgy53ub1" path="res://resources/stat_blocks/enemy_standard.tres" id="4_f22r5"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_qyvdh"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="5_ik4rd"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="6_f22r5"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_evjv1"]
+radius = 60.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3djq"]
 radius = 36.0
 
-[node name="EnemySimple" unique_id=2144712344 instance=ExtResource("1_e3xgn")]
+[node name="EnemySimple" type="CharacterBody2D" unique_id=2144712344]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("2_r5h47")
 
-[node name="Sprite2D" parent="." index="0" unique_id=279184422]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=279184422]
 scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_qyvdh")
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=1673152047]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1673152047]
 scale = Vector2(0.6, 0.6)
+shape = SubResource("CircleShape2D_evjv1")
 
-[node name="Hurtbox" type="Area2D" parent="." index="4" unique_id=1992707134]
+[node name="StatManager" type="Node" parent="." unique_id=2126797095]
+script = ExtResource("3_ik4rd")
+base_stats = ExtResource("4_f22r5")
+metadata/_custom_type_script = "uid://dvb7yux7fewm1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0" unique_id=318809209]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=329484968]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1992707134]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=318809209]
 shape = SubResource("CircleShape2D_l3djq")
 
-[node name="StateChart" type="Node" parent="." index="5" unique_id=1918742638]
+[node name="StateChart" type="Node" parent="." unique_id=1918742638]
 script = ExtResource("3_cwp2g")
 metadata/_custom_type_script = "uid://couw105c3bde4"
 
-[node name="Root" type="Node" parent="StateChart" index="0" unique_id=239697981]
+[node name="Root" type="Node" parent="StateChart" unique_id=239697981]
 script = ExtResource("4_qyvdh")
 initial_state = NodePath("Chase")
 
-[node name="ToHitstun" type="Node" parent="StateChart/Root" index="0" unique_id=910243432]
+[node name="ToHitstun" type="Node" parent="StateChart/Root" unique_id=910243432]
 script = ExtResource("5_ik4rd")
 to = NodePath("../Hitstun")
 event = &"took_damage"
 delay_in_seconds = "0.0"
 
-[node name="Chase" type="Node" parent="StateChart/Root" index="1" unique_id=1875477693]
+[node name="Chase" type="Node" parent="StateChart/Root" unique_id=1875477693]
 script = ExtResource("6_f22r5")
 
-[node name="Hitstun" type="Node" parent="StateChart/Root" index="2" unique_id=1248415054]
+[node name="Hitstun" type="Node" parent="StateChart/Root" unique_id=1248415054]
 script = ExtResource("6_f22r5")
 
-[node name="ToChase" type="Node" parent="StateChart/Root/Hitstun" index="0" unique_id=162785588]
+[node name="ToChase" type="Node" parent="StateChart/Root/Hitstun" unique_id=162785588]
 script = ExtResource("5_ik4rd")
 to = NodePath("../../Chase")
 delay_in_seconds = "0.3"
