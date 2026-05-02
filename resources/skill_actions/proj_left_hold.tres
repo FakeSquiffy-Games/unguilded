@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SkillAction" format=3 uid="uid://chwnsiy8jp43w"]
-
-[ext_resource type="Script" uid="uid://dw2jtjoqvhifr" path="res://resources/skill_action.gd" id="1_d7lxk"]
-
-[resource]
-script = ExtResource("1_d7lxk")
-skill_id = &"proj_hold"
-energy_cost = 20.0
-is_energy_drain = true

@@ -12,9 +12,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_evjv1"]
 radius = 60.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l3djq"]
-radius = 36.0
-
 [node name="EnemySimple" type="CharacterBody2D" unique_id=2144712344]
 collision_layer = 2
 collision_mask = 5
@@ -34,11 +31,6 @@ base_stats = ExtResource("4_f22r5")
 metadata/_custom_type_script = "uid://dvb7yux7fewm1"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=329484968]
-
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1992707134]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=318809209]
-shape = SubResource("CircleShape2D_l3djq")
 
 [node name="StateChart" type="Node" parent="." unique_id=1918742638]
 script = ExtResource("3_cwp2g")

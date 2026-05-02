@@ -2,13 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://cljnp7fge7giu" path="res://scenes/player/player.gd" id="1_lvxji"]
-[ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://scripts/components/stat_manager.gd" id="2_gmlin"]
-[ext_resource type="Resource" uid="uid://dh760056dhlk2" path="res://resources/stat_blocks/player_base_stats.tres" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://cghj37covskdw" path="res://scripts/player/input_handler.gd" id="5_5gtgg"]
+[ext_resource type="Script" uid="uid://7s3f38i5enfq" path="res://scripts/components/party_manager.gd" id="5_je7p5"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_5gtgg"]
 [ext_resource type="Script" uid="uid://bbwdkqeuga087" path="res://scripts/components/progress_component.gd" id="6_je7p5"]
-[ext_resource type="Script" uid="uid://dvrxg41lasx6x" path="res://scripts/components/skill_handler.gd" id="7_gx1jg"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="7_h17s1"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_je7p5"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_kvlxm"]
@@ -17,10 +15,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvxji"]
 radius = 60.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fm80t"]
+radius = 65.0
+
 [sub_resource type="Resource" id="Resource_lgqa7"]
 script = ExtResource("13_uf5tr")
 
 [node name="Player" type="CharacterBody2D" unique_id=338249272 groups=["player"]]
+collision_mask = 6
 script = ExtResource("1_lvxji")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=846379245]
@@ -29,10 +31,12 @@ texture = ExtResource("1_dovo2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734321397]
 shape = SubResource("CircleShape2D_lvxji")
 
-[node name="StatManager" type="Node" parent="." unique_id=2013524261]
-script = ExtResource("2_gmlin")
-base_stats = ExtResource("3_gmlin")
-metadata/_custom_type_script = "uid://dvb7yux7fewm1"
+[node name="Hurtbox" type="Area2D" parent="." unique_id=508819632]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1873841858]
+shape = SubResource("CircleShape2D_fm80t")
 
 [node name="InputHandler" type="Node" parent="." unique_id=559745086]
 script = ExtResource("5_5gtgg")
@@ -42,9 +46,9 @@ metadata/_custom_type_script = "uid://cghj37covskdw"
 script = ExtResource("6_je7p5")
 metadata/_custom_type_script = "uid://bbwdkqeuga087"
 
-[node name="SkillHandler" type="Node" parent="." unique_id=244422374]
-script = ExtResource("7_gx1jg")
-metadata/_custom_type_script = "uid://dvrxg41lasx6x"
+[node name="PartyManager" type="Node" parent="." unique_id=1084799951]
+script = ExtResource("5_je7p5")
+metadata/_custom_type_script = "uid://7s3f38i5enfq"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2095680796]
 

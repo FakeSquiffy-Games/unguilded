@@ -12,7 +12,10 @@ var cooldowns: Dictionary = {
 	"right_tap": 0.0, "right_hold": 0.0
 }
 
-@onready var actor: Node2D = owner
+var actor: Node2D
+
+func setup(p_actor: Node2D) -> void:
+	actor = p_actor
 
 func _process(delta: float) -> void:
 	for action in cooldowns.keys():
