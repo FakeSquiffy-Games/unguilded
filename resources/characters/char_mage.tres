@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://84bwi01x5v2v"]
+
+[ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="1_j1i3y"]
+[ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/weapons/commands/projectile_command.gd" id="3_636ca"]
+[ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_sajg6"]
+[ext_resource type="PackedScene" uid="uid://s2b0evf7ypmu" path="res://scenes/projectiles/fireball.tscn" id="4_uoagk"]
+[ext_resource type="SpriteFrames" uid="uid://dvkx8gdmq16m6" path="res://resources/frames/mage_frames.tres" id="5_45s7j"]
+
+[sub_resource type="Resource" id="Resource_540cu"]
+script = ExtResource("1_j1i3y")
+move_speed = 200.0
+casting_multiplier = 3.0
+
+[sub_resource type="Resource" id="Resource_0loeu"]
+script = ExtResource("3_636ca")
+projectile_scene = ExtResource("4_uoagk")
+fire_rate = 0.3
+skill_type = 1
+energy_requirement = 50.0
+base_regen = 5.0
+startup_frames = 9
+active_frames = 3
+recovery_frames = 6
+
+[sub_resource type="Resource" id="Resource_bpi0h"]
+script = ExtResource("3_636ca")
+projectile_scene = ExtResource("4_uoagk")
+fire_rate = 1.0
+base_regen = 100.0
+startup_frames = 9
+active_frames = 3
+recovery_frames = 6
+
+[resource]
+script = ExtResource("4_sajg6")
+character_name = &"Mage"
+sprite_frames = ExtResource("5_45s7j")
+base_stats = SubResource("Resource_540cu")
+left_tap = SubResource("Resource_bpi0h")
+left_hold = SubResource("Resource_0loeu")
