@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://dkbm6ov8xo2ur"]
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://qrm7mc62gees"]
 
 [ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="1_bm56q"]
 [ext_resource type="PackedScene" uid="uid://c5d4ci535m5mo" path="res://scenes/projectiles/arrow.tscn" id="2_sl54k"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/weapons/commands/projectile_command.gd" id="3_gku24"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_a6b1f"]
-[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="5_0wsgj"]
+[ext_resource type="SpriteFrames" uid="uid://cdjtnippfol3p" path="res://resources/frames/archer_frames.tres" id="5_p2agx"]
 
 [sub_resource type="Resource" id="Resource_vdi52"]
 script = ExtResource("1_bm56q")
@@ -13,11 +13,27 @@ move_speed = 350.0
 [sub_resource type="Resource" id="Resource_0loeu"]
 script = ExtResource("3_gku24")
 projectile_scene = ExtResource("2_sl54k")
-cooldown = 0.4
+fire_rate = 0.3
+skill_type = 1
+energy_requirement = 50.0
+base_regen = 5.0
+startup_frames = 12
+active_frames = 2
+recovery_frames = 4
+
+[sub_resource type="Resource" id="Resource_bpi0h"]
+script = ExtResource("3_gku24")
+projectile_scene = ExtResource("2_sl54k")
+fire_rate = 1.0
+base_regen = 100.0
+startup_frames = 12
+active_frames = 2
+recovery_frames = 4
 
 [resource]
 script = ExtResource("4_a6b1f")
 character_name = &"Archer"
-sprite_texture = ExtResource("5_0wsgj")
+sprite_frames = ExtResource("5_p2agx")
 base_stats = SubResource("Resource_vdi52")
-left_tap = SubResource("Resource_0loeu")
+left_tap = SubResource("Resource_bpi0h")
+left_hold = SubResource("Resource_0loeu")

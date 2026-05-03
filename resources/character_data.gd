@@ -2,7 +2,7 @@ class_name CharacterData
 extends Resource
 
 @export var character_name: StringName = &"Unknown"
-@export var sprite_texture: Texture2D
+@export var sprite_frames: SpriteFrames
 @export var base_stats: StatBlock
 
 @export_group("Skills")

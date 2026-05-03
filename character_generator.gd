@@ -2,37 +2,45 @@
 extends EditorScript
 
 func _run() -> void:
-	# Build Base Stats
+	# Archer Stats
 	var archer_stats = StatBlock.new()
 	archer_stats.move_speed = 350.0
+	archer_stats.casting_multiplier = 1.0 # Standard Cast Speed
+	
+	# Mage Stats
 	var mage_stats = StatBlock.new()
-	mage_stats.move_speed = 200.0 # Slower but regenerates energy faster
-	mage_stats.energy_regen = 25.0
+	mage_stats.move_speed = 200.0
+	mage_stats.casting_multiplier = 3.0 # FSM is 3x faster, Regens 3x faster
 	
-	# Build the Arrow Command
+	# Standard Arrow Tap
 	var arrow_cmd = ProjectileCommand.new()
+	arrow_cmd.skill_type = SkillCommand.SkillType.TAP
 	arrow_cmd.projectile_scene = load("res://scenes/projectiles/arrow.tscn")
-	arrow_cmd.cooldown = 0.4
+	arrow_cmd.energy_requirement = 100.0
+	arrow_cmd.base_regen = 100.0 # Regens in 1 second
 	
-	# Assemble Archer
+	# Machine Gun Hold (Continuous)
+	var mg_cmd = ProjectileCommand.new()
+	mg_cmd.skill_type = SkillCommand.SkillType.HOLD_CONTINUOUS
+	mg_cmd.projectile_scene = load("res://scenes/projectiles/arrow.tscn")
+	mg_cmd.energy_requirement = 40.0 # Drains 40/s
+	mg_cmd.base_regen = 20.0 # Regens 20/s
+	mg_cmd.fire_rate = 0.1
+	
 	var archer = CharacterData.new()
 	archer.character_name = "Archer"
 	archer.sprite_texture = load("res://icon.svg")
 	archer.base_stats = archer_stats
 	archer.left_tap = arrow_cmd
+	archer.left_hold = mg_cmd
 	ResourceSaver.save(archer, "res://resources/char_archer.tres")
-	
-	# Assemble Mage (Uses same command for testing, but different cooldowns)
-	var fast_arrow_cmd = ProjectileCommand.new()
-	fast_arrow_cmd.projectile_scene = load("res://scenes/projectiles/arrow.tscn")
-	fast_arrow_cmd.cooldown = 0.1 # Machine gun arrow
-	fast_arrow_cmd.energy_cost = 5.0
 	
 	var mage = CharacterData.new()
 	mage.character_name = "Mage"
 	mage.sprite_texture = load("res://icon.svg")
 	mage.base_stats = mage_stats
-	mage.left_tap = fast_arrow_cmd
+	mage.left_tap = arrow_cmd
+	mage.left_hold = mg_cmd
 	ResourceSaver.save(mage, "res://resources/char_mage.tres")
 	
-	print("Phase 9: Characters Generated!")
+	print("Phase 10: Energy System Resources Generated!")

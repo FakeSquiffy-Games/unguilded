@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://s2b0evf7ypmu"]
+
+[ext_resource type="Script" uid="uid://b0wp7kxbxqtp7" path="res://scenes/projectiles/projectile_base.gd" id="1_t07v1"]
+[ext_resource type="Texture2D" uid="uid://clomr3vhu0ybw" path="res://assets/sprites/Tiny RPG Character Asset Pack v1.03/Magic(Projectile)/Wizard-Attack02_Effect.png" id="2_t07v1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s73vv"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qphfj"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4ew8"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmge0"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6751w"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlgwq"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkddm"]
+atlas = ExtResource("2_t07v1")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nl28u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s73vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qphfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4ew8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmge0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6751w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlgwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkddm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fcyka"]
+radius = 11.0
+
+[node name="Arrow" type="CharacterBody2D" unique_id=1595893087]
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_t07v1")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=554378982]
+sprite_frames = SubResource("SpriteFrames_nl28u")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=825055754]
+position = Vector2(4, 2)
+shape = SubResource("CircleShape2D_fcyka")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1987717753]
+rect = Rect2(-50, -50, 100, 100)

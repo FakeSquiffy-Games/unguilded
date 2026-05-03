@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://d366do8gdl7ln"]
 
-[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://cljnp7fge7giu" path="res://scenes/player/player.gd" id="1_lvxji"]
 [ext_resource type="Script" uid="uid://cghj37covskdw" path="res://scripts/player/input_handler.gd" id="5_5gtgg"]
+[ext_resource type="Script" uid="uid://dgr5mxxl34fjo" path="res://scripts/components/animation_controller.gd" id="5_fm80t"]
 [ext_resource type="Script" uid="uid://7s3f38i5enfq" path="res://scripts/components/party_manager.gd" id="5_je7p5"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_5gtgg"]
 [ext_resource type="Script" uid="uid://bbwdkqeuga087" path="res://scripts/components/progress_component.gd" id="6_je7p5"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="7_h17s1"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_je7p5"]
+[ext_resource type="Script" uid="uid://c1vp0ojjvaby1" path="res://addons/godot_state_charts/parallel_state.gd" id="9_gx1jg"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_kvlxm"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_uf5tr"]
 
@@ -25,8 +26,8 @@ script = ExtResource("13_uf5tr")
 collision_mask = 6
 script = ExtResource("1_lvxji")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=846379245]
-texture = ExtResource("1_dovo2")
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=571606406]
+scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734321397]
 shape = SubResource("CircleShape2D_lvxji")
@@ -50,6 +51,12 @@ metadata/_custom_type_script = "uid://bbwdkqeuga087"
 script = ExtResource("5_je7p5")
 metadata/_custom_type_script = "uid://7s3f38i5enfq"
 
+[node name="AnimationController" type="Node" parent="." unique_id=1179324243 node_paths=PackedStringArray("sprite", "state_chart")]
+script = ExtResource("5_fm80t")
+sprite = NodePath("../Sprite")
+state_chart = NodePath("../StateChart")
+metadata/_custom_type_script = "uid://dgr5mxxl34fjo"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2095680796]
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1253994028 node_paths=PackedStringArray("follow_target")]
@@ -67,70 +74,96 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 script = ExtResource("5_qek5x")
 metadata/_custom_type_script = "uid://couw105c3bde4"
 
-[node name="CombatRoot" type="Node" parent="StateChart" unique_id=357334529]
+[node name="ParallelRoot" type="Node" parent="StateChart" unique_id=405583248]
+script = ExtResource("9_gx1jg")
+metadata/_custom_type_script = "uid://c1vp0ojjvaby1"
+
+[node name="CombatRoot" type="Node" parent="StateChart/ParallelRoot" unique_id=357334529]
 script = ExtResource("6_5gtgg")
 initial_state = NodePath("Neutral")
 
-[node name="ToHitstun" type="Node" parent="StateChart/CombatRoot" unique_id=2075904850]
+[node name="ToHitstun" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=2075904850]
 script = ExtResource("7_h17s1")
 to = NodePath("../Hitstun")
 event = &"player_hit"
 delay_in_seconds = "0.0"
 
-[node name="Neutral" type="Node" parent="StateChart/CombatRoot" unique_id=336091361]
+[node name="Neutral" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=336091361]
 script = ExtResource("8_je7p5")
 
-[node name="ToStartup" type="Node" parent="StateChart/CombatRoot/Neutral" unique_id=1988935342]
+[node name="ToStartup" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Neutral" unique_id=1988935342]
 script = ExtResource("7_h17s1")
 to = NodePath("../../Startup")
 event = &"skill_requested"
 delay_in_seconds = "0.0"
 
-[node name="Startup" type="Node" parent="StateChart/CombatRoot" unique_id=1346919532]
+[node name="Startup" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=1346919532]
 script = ExtResource("8_je7p5")
 
-[node name="ToActive" type="Node" parent="StateChart/CombatRoot/Startup" unique_id=1527060331]
+[node name="ToActive" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Startup" unique_id=1527060331]
 script = ExtResource("7_h17s1")
 to = NodePath("../../Active")
 event = &"skill_active"
 delay_in_seconds = "0.0"
 
-[node name="Active" type="Node" parent="StateChart/CombatRoot" unique_id=2047065779]
+[node name="Active" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=2047065779]
 script = ExtResource("8_je7p5")
 
-[node name="ToRecovery" type="Node" parent="StateChart/CombatRoot/Active" unique_id=239454720]
+[node name="ToRecovery" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Active" unique_id=239454720]
 script = ExtResource("7_h17s1")
 to = NodePath("../../Recovery")
 event = &"skill_recovery"
 delay_in_seconds = "0.0"
 
-[node name="Hitstun" type="Node" parent="StateChart/CombatRoot" unique_id=1336226014]
+[node name="Hitstun" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=1336226014]
 script = ExtResource("8_je7p5")
 
-[node name="ToNeutral" type="Node" parent="StateChart/CombatRoot/Hitstun" unique_id=1329681924]
+[node name="ToNeutral" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Hitstun" unique_id=1329681924]
 script = ExtResource("7_h17s1")
 to = NodePath("../../Neutral")
 event = &"hitstun_complete"
 delay_in_seconds = "0.0"
 
-[node name="Recovery" type="Node" parent="StateChart/CombatRoot" unique_id=1186231353]
+[node name="Recovery" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=1186231353]
 script = ExtResource("6_5gtgg")
 initial_state = NodePath("Cooldown")
 
-[node name="Cooldown" type="Node" parent="StateChart/CombatRoot/Recovery" unique_id=1335407087]
+[node name="Cooldown" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Recovery" unique_id=1335407087]
 script = ExtResource("8_je7p5")
 
-[node name="ToCancelWindow" type="Node" parent="StateChart/CombatRoot/Recovery/Cooldown" unique_id=247291910]
+[node name="ToCancelWindow" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Recovery/Cooldown" unique_id=247291910]
 script = ExtResource("7_h17s1")
 to = NodePath("../../CancelWindow")
 event = &"cancel_window_open"
 delay_in_seconds = "0.0"
 
-[node name="CancelWindow" type="Node" parent="StateChart/CombatRoot/Recovery" unique_id=1764373287]
+[node name="CancelWindow" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Recovery" unique_id=1764373287]
 script = ExtResource("8_je7p5")
 
-[node name="ToNeutral" type="Node" parent="StateChart/CombatRoot/Recovery/CancelWindow" unique_id=2076573044]
+[node name="ToNeutral" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Recovery/CancelWindow" unique_id=2076573044]
 script = ExtResource("7_h17s1")
 to = NodePath("../../../Neutral")
 event = &"skill_complete"
+delay_in_seconds = "0.0"
+
+[node name="MovementRoot" type="Node" parent="StateChart/ParallelRoot" unique_id=2114561673]
+script = ExtResource("6_5gtgg")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/ParallelRoot/MovementRoot" unique_id=1368118079]
+script = ExtResource("8_je7p5")
+
+[node name="ToRun" type="Node" parent="StateChart/ParallelRoot/MovementRoot/Idle" unique_id=1247642978]
+script = ExtResource("7_h17s1")
+to = NodePath("../../Run")
+event = &"movement_started"
+delay_in_seconds = "0.0"
+
+[node name="Run" type="Node" parent="StateChart/ParallelRoot/MovementRoot" unique_id=1819270396]
+script = ExtResource("8_je7p5")
+
+[node name="ToIdle" type="Node" parent="StateChart/ParallelRoot/MovementRoot/Run" unique_id=277388242]
+script = ExtResource("7_h17s1")
+to = NodePath("../../Idle")
+event = &"movement_stopped"
 delay_in_seconds = "0.0"

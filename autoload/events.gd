@@ -4,7 +4,6 @@ extends Node
 
 # Player Signals
 signal player_health_changed(current: int, maximum: int)
-signal player_energy_changed(current: float, maximum: float)
 
 # Combat Signals
 signal enemy_died(enemy: Node)
@@ -15,6 +14,6 @@ signal cancel_window_open
 signal player_hit
 
 # Progression & UI Signals
-signal cooldown_updated(slot_index: int, action_name: StringName, remaining: float, total: float)
+signal skill_energy_updated(character_name: StringName, slot_name: String, current_energy: float, max_energy: float)
 signal weapon_switched(slot_index: int)
-signal weapon_acquired(weapon: WeaponResource)
+signal weapon_acquired(weapon: Resource)
