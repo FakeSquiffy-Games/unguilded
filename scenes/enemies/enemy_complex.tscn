@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://vqv6gkcfvxrr"]
+
+[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="2_ltq5d"]
+[ext_resource type="Script" uid="uid://by1au52lx1gd3" path="res://scripts/enemies/enemy_complex.gd" id="2_rp85w"]
+[ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://scripts/components/stat_manager.gd" id="3_7da2s"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_42v78"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_ltq5d"]
+[ext_resource type="Resource" uid="uid://rcn5bgy53ub1" path="res://resources/stat_blocks/enemy_standard.tres" id="4_sjqoq"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="5_7da2s"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="6_sjqoq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evjv1"]
+radius = 60.0
+
+[node name="EnemyComplex" type="CharacterBody2D" unique_id=2144712344]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_rp85w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=279184422]
+texture = ExtResource("2_ltq5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1673152047]
+shape = SubResource("CircleShape2D_evjv1")
+
+[node name="StatManager" type="Node" parent="." unique_id=2126797095]
+script = ExtResource("3_7da2s")
+base_stats = ExtResource("4_sjqoq")
+metadata/_custom_type_script = "uid://dvb7yux7fewm1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=329484968]
+
+[node name="StateChart" type="Node" parent="." unique_id=1050097672]
+script = ExtResource("3_42v78")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=2046277253]
+script = ExtResource("4_ltq5d")
+initial_state = NodePath("Chase")
+
+[node name="ToHitstun" type="Node" parent="StateChart/Root" unique_id=964962730]
+script = ExtResource("5_7da2s")
+to = NodePath("../Hitstun")
+event = &"took_damage"
+delay_in_seconds = "0.0"
+
+[node name="Chase" type="Node" parent="StateChart/Root" unique_id=1814405633]
+script = ExtResource("6_sjqoq")
+
+[node name="ToTelegraph" type="Node" parent="StateChart/Root/Chase" unique_id=1114398071]
+script = ExtResource("5_7da2s")
+to = NodePath("../../Telegraph")
+event = &"player_in_range"
+delay_in_seconds = "0.0"
+
+[node name="Telegraph" type="Node" parent="StateChart/Root" unique_id=1960566593]
+script = ExtResource("6_sjqoq")
+
+[node name="ToAttack" type="Node" parent="StateChart/Root/Telegraph" unique_id=1034074604]
+script = ExtResource("5_7da2s")
+to = NodePath("../../Attack")
+delay_in_seconds = "0.6"
+
+[node name="Attack" type="Node" parent="StateChart/Root" unique_id=1623237207]
+script = ExtResource("6_sjqoq")
+
+[node name="ToCooldown" type="Node" parent="StateChart/Root/Attack" unique_id=1826813440]
+script = ExtResource("5_7da2s")
+to = NodePath("../../Cooldown")
+delay_in_seconds = "0.2"
+
+[node name="Cooldown" type="Node" parent="StateChart/Root" unique_id=741688705]
+script = ExtResource("6_sjqoq")
+
+[node name="ToChase" type="Node" parent="StateChart/Root/Cooldown" unique_id=2098241065]
+script = ExtResource("5_7da2s")
+to = NodePath("../../Chase")
+delay_in_seconds = "1.5"
+
+[node name="Hitstun" type="Node" parent="StateChart/Root" unique_id=1935824822]
+script = ExtResource("6_sjqoq")
+
+[node name="ToChase" type="Node" parent="StateChart/Root/Hitstun" unique_id=832167770]
+script = ExtResource("5_7da2s")
+to = NodePath("../../Chase")
+delay_in_seconds = "0.5"

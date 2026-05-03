@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://drnc805rrn3kl"]
+
+[ext_resource type="Script" uid="uid://d038v07g12gea" path="res://scripts/enemies/enemy_base.gd" id="1_qa0nx"]
+[ext_resource type="Texture2D" uid="uid://b6pyjum1wc0qp" path="res://icon.svg" id="1_satqt"]
+[ext_resource type="Script" uid="uid://dvb7yux7fewm1" path="res://scripts/components/stat_manager.gd" id="2_qa0nx"]
+[ext_resource type="Resource" uid="uid://rcn5bgy53ub1" path="res://resources/stat_blocks/enemy_standard.tres" id="3_xdb20"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evjv1"]
+radius = 60.0
+
+[node name="EnemyBase" type="CharacterBody2D" unique_id=2144712344]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_qa0nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=279184422]
+texture = ExtResource("1_satqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1673152047]
+shape = SubResource("CircleShape2D_evjv1")
+
+[node name="StatManager" type="Node" parent="." unique_id=2126797095]
+script = ExtResource("2_qa0nx")
+base_stats = ExtResource("3_xdb20")
+metadata/_custom_type_script = "uid://dvb7yux7fewm1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=329484968]
