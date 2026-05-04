@@ -14,20 +14,20 @@ func setup(data: UpgradeData) -> void:
 # --- GODOT NATIVE DRAG & DROP API ---
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	# 1. Create a visual preview that follows the mouse
+	# 1. Create a transparent preview that follows the mouse cursor
 	var preview = Control.new()
 	var preview_panel = PanelContainer.new()
 	var preview_label = Label.new()
 	
 	preview_label.text = upgrade_data.display_name
 	preview_panel.add_child(preview_label)
-	preview_panel.modulate.a = 0.7 # Make it slightly transparent
+	preview_panel.modulate.a = 0.8
 	
-	# Offset the preview so the mouse is centered on it
+	# Offset so the cursor isn't blocking the top-left corner
 	preview_panel.position = Vector2(-50, -20) 
 	preview.add_child(preview_panel)
 	
 	set_drag_preview(preview)
 	
-	# 2. Return the actual data package
-	return { "type": "upgrade", "upgrade": upgrade_data }
+	# 2. Return the actual Resource data
+	return upgrade_data

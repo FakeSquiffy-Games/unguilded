@@ -22,7 +22,7 @@ func _ready() -> void:
 	
 	# Load Test Party
 	party_manager.add_character(load("res://resources/characters/char_archer.tres"))
-	party_manager.add_character(load("res://resources/characters/char_mage.tres"))
+	#party_manager.add_character(load("res://resources/characters/char_mage.tres"))
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://c0okucwjjmwjg"]
+
+[ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="1_4wbdo"]
+[ext_resource type="Resource" uid="uid://84bwi01x5v2v" path="res://resources/characters/char_mage.tres" id="2_5lrtk"]
+[ext_resource type="Script" uid="uid://bx3ot0532jyrg" path="res://resources/loot_table.gd" id="2_t3g2l"]
+[ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="3_5lrtk"]
+
+[sub_resource type="Resource" id="Resource_ahado"]
+script = ExtResource("3_5lrtk")
+max_health = 0
+move_speed = 20.0
+damage_multiplier = 0.0
+casting_multiplier = 0.0
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[sub_resource type="Resource" id="Resource_4vhv4"]
+script = ExtResource("3_5lrtk")
+max_health = 0
+move_speed = 0.0
+damage_multiplier = 0.1
+casting_multiplier = 0.0
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[sub_resource type="Resource" id="Resource_lwilm"]
+script = ExtResource("3_5lrtk")
+max_health = 0
+move_speed = 0.0
+damage_multiplier = 0.0
+casting_multiplier = 0.1
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[sub_resource type="Resource" id="Resource_vqnj1"]
+script = ExtResource("3_5lrtk")
+max_health = 0
+move_speed = 30.0
+damage_multiplier = 0.0
+casting_multiplier = 0.0
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[sub_resource type="Resource" id="Resource_18bn7"]
+script = ExtResource("3_5lrtk")
+max_health = 0
+move_speed = 0.0
+damage_multiplier = 0.2
+casting_multiplier = 0.0
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[sub_resource type="Resource" id="Resource_qc5fd"]
+script = ExtResource("3_5lrtk")
+max_health = 0
+move_speed = 0.0
+damage_multiplier = 0.0
+casting_multiplier = 0.2
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[resource]
+script = ExtResource("2_t3g2l")
+available_characters = Array[ExtResource("1_4wbdo")]([ExtResource("2_5lrtk")])
+stat_pool = Array[ExtResource("3_5lrtk")]([SubResource("Resource_ahado"), SubResource("Resource_4vhv4"), SubResource("Resource_lwilm"), SubResource("Resource_vqnj1"), SubResource("Resource_18bn7"), SubResource("Resource_qc5fd")])
+metadata/_custom_type_script = "uid://bx3ot0532jyrg"
