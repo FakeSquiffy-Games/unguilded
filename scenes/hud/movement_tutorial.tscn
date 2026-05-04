@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dbwqjo0q0vsjn"]
+
+[ext_resource type="Script" uid="uid://vqrhx4tytwah" path="res://scripts/movent_tutorial.gd" id="1_7duqw"]
+[ext_resource type="Texture2D" uid="uid://r4btjcwqgoiu" path="res://assets/tutorial/Ninja Adventure/KeyW.png" id="1_fb3nl"]
+[ext_resource type="Texture2D" uid="uid://c2avoe0lkx7vq" path="res://assets/tutorial/Ninja Adventure/KeyA.png" id="2_7duqw"]
+[ext_resource type="Texture2D" uid="uid://wladwt54ntb4" path="res://assets/tutorial/Ninja Adventure/KeyS.png" id="3_b8a1b"]
+[ext_resource type="Texture2D" uid="uid://bgji710svxiac" path="res://assets/tutorial/Ninja Adventure/KeyD.png" id="4_pei51"]
+
+[node name="MovementTutorial" type="Node2D" unique_id=1466542989]
+script = ExtResource("1_7duqw")
+
+[node name="MovementGroup" type="Control" parent="." unique_id=910017692]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -156.5
+offset_right = 222.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopRow" type="HBoxContainer" parent="MovementGroup" unique_id=1224826256]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="KeyW" type="Sprite2D" parent="MovementGroup/TopRow" unique_id=2131239451]
+position = Vector2(226, 73.5)
+scale = Vector2(4, 4)
+texture = ExtResource("1_fb3nl")
+
+[node name="BottomRow" type="HBoxContainer" parent="MovementGroup" unique_id=847344982]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="KeyA" type="Sprite2D" parent="MovementGroup/BottomRow" unique_id=1722645010]
+position = Vector2(168, 132.5)
+scale = Vector2(4, 4)
+texture = ExtResource("2_7duqw")
+
+[node name="KeyS" type="Sprite2D" parent="MovementGroup/BottomRow" unique_id=1427837608]
+position = Vector2(225, 132.5)
+scale = Vector2(4, 4)
+texture = ExtResource("3_b8a1b")
+
+[node name="KeyD" type="Sprite2D" parent="MovementGroup/BottomRow" unique_id=1939746750]
+position = Vector2(285, 132.5)
+scale = Vector2(4, 4)
+texture = ExtResource("4_pei51")
