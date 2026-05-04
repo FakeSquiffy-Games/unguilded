@@ -37,4 +37,7 @@ func _recalculate() -> void:
 		final_knockback_resistance += mod.knockback_resistance
 	
 	final_knockback_resistance = clampf(final_knockback_resistance, 0.0, 1.0)
+	final_casting_multiplier = maxf(0.05, final_casting_multiplier) 
+	final_damage_multiplier = maxf(0.0, final_damage_multiplier)
+	
 	Events.stats_changed.emit()

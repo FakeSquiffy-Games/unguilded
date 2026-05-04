@@ -7,6 +7,7 @@ class SkillSlot:
 	var max_energy: float = 100.0
 	var slot_data: Dictionary = {}
 
+@export var emits_hud_events: bool = false # Set to true only for Player Actors
 @export var left_tap: SkillCommand
 @export var left_hold: SkillCommand
 @export var right_tap: SkillCommand
@@ -36,7 +37,7 @@ func process_background(delta: float, casting_multiplier: float) -> void:
 		var slot: SkillSlot = slots[slot_name]
 		if slot.command and slot.current_energy < slot.max_energy:
 			slot.current_energy = minf(slot.max_energy, slot.current_energy + (slot.command.base_regen * casting_multiplier * delta))
-			if character_name != &"" and character_name != &"Enemy":
+			if emits_hud_events:
 				Events.skill_energy_updated.emit(character_name, slot_name, slot.current_energy, slot.max_energy)
 
 func validate_and_pay(action_name: String) -> bool:
@@ -53,7 +54,7 @@ func validate_and_pay(action_name: String) -> bool:
 		if slot.current_energy < min_activation_cost: 
 			return false
 	
-	if character_name != &"" and character_name != &"Enemy":
+	if emits_hud_events:
 		Events.skill_energy_updated.emit(character_name, action_name, slot.current_energy, slot.max_energy)
 	return true
 

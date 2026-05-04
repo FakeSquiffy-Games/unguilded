@@ -17,8 +17,9 @@ func setup(p_data: CharacterData, p_actor: Node2D) -> void:
 	skill_handler.left_hold = data.left_hold
 	skill_handler.right_tap = data.right_tap
 	skill_handler.right_hold = data.right_hold
-	add_child(skill_handler)
+	skill_handler.emits_hud_events = true 
 	
+	add_child(skill_handler)
 	skill_handler.setup(p_actor, data.character_name, stat_manager)
 
 func process_background(delta: float) -> void:

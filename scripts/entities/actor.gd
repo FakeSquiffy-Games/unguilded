@@ -148,6 +148,14 @@ func _connect_state_chart() -> void:
 
 func _start_scaled_timer(base_duration: float, event_name: String) -> void:
 	if _state_timer_tween: _state_timer_tween.kill()
-	var mult: float = stat_manager.final_casting_multiplier if stat_manager else 1.0
+	
+	# Defensive check for valid multiplier
+	var mult: float = 1.0
+	if is_instance_valid(stat_manager):
+		mult = stat_manager.final_casting_multiplier
+		
 	_state_timer_tween = create_tween()
-	_state_timer_tween.tween_callback(func(): state_chart.send_event(event_name)).set_delay(base_duration / mult)
+	_state_timer_tween.tween_callback(func(): 
+		if is_instance_valid(state_chart):
+			state_chart.send_event(event_name)
+	).set_delay(base_duration / mult)

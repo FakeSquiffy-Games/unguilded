@@ -25,6 +25,6 @@ func resolve(attacker_stats: StatBlock, skill: SkillCommand, defender_stats: Sta
 	var applied_knockback: Vector2 = attack_direction.normalized() * actual_force
 	
 	# Only trigger hitstun if the resulting force is still strong enough
-	var triggers_hitstun: bool = actual_force > 300.0 
+	var triggers_hitstun: bool = actual_force >= 300.0 
 	
 	return CombatResult.new(final_damage, applied_knockback, triggers_hitstun)
