@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dvbmuad3611kh"]
+
+[ext_resource type="Script" uid="uid://bfoojijoyvjj4" path="res://scripts/projectiles/hitbox.gd" id="1_cei6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf1lk"]
+size = Vector2(14, 44)
+
+[node name="Hitbox" type="Area2D" unique_id=1548103303]
+z_index = 1
+scale = Vector2(5, 5)
+collision_layer = 2
+script = ExtResource("1_cei6i")
+metadata/_custom_type_script = "uid://bfoojijoyvjj4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040649869]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_rf1lk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1885259829]
+position = Vector2(-10, 10)
+rotation = -1.1034713
+autoplay = "default"

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ch47wtn718v32"]
+
+[ext_resource type="Script" uid="uid://be8aeh10fpcj0" path="res://scripts/projectiles/aoe_zone.gd" id="1_7tx1j"]
+[ext_resource type="Texture2D" uid="uid://clomr3vhu0ybw" path="res://assets/sprites/Tiny RPG Character Asset Pack v1.03/Magic(Projectile)/Wizard-Attack02_Effect.png" id="2_5svvd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tx1j"]
+radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spya5"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggve5"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r7m7"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alipm"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swgy8"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dgjh"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu3jj"]
+atlas = ExtResource("2_5svvd")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsrlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spya5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggve5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r7m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alipm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swgy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dgjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu3jj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AoeZone" type="Area2D" unique_id=1732934119]
+scale = Vector2(5, 5)
+script = ExtResource("1_7tx1j")
+metadata/_custom_type_script = "uid://be8aeh10fpcj0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580604921]
+shape = SubResource("CircleShape2D_7tx1j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1776130976]
+position = Vector2(-2.5, -2.5)
+sprite_frames = SubResource("SpriteFrames_xsrlk")
+frame = 6

@@ -14,6 +14,7 @@ fire_rate = 0.3
 skill_type = 1
 energy_requirement = 50.0
 base_regen = 5.0
+base_damage = 20.0
 startup_frames = 9
 active_frames = 3
 recovery_frames = 6
@@ -22,7 +23,7 @@ metadata/_custom_type_script = "uid://byisi4g83p2ta"
 [sub_resource type="Resource" id="Resource_5ivp0"]
 script = ExtResource("3_45s7j")
 projectile_scene = ExtResource("4_uoagk")
-base_damage = 15.0
+base_damage = 30.0
 startup_frames = 9
 active_frames = 3
 recovery_frames = 6

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="1_4wbdo"]
 [ext_resource type="Resource" uid="uid://84bwi01x5v2v" path="res://resources/characters/char_mage.tres" id="2_5lrtk"]
+[ext_resource type="Resource" uid="uid://ca1k7hadmg74x" path="res://resources/characters/char_swordsman.tres" id="2_ahado"]
 [ext_resource type="Script" uid="uid://bx3ot0532jyrg" path="res://resources/loot_table.gd" id="2_t3g2l"]
 [ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="3_5lrtk"]
 
@@ -55,6 +56,6 @@ metadata/_custom_type_script = "uid://c8wxhbgikceud"
 
 [resource]
 script = ExtResource("2_t3g2l")
-available_characters = Array[ExtResource("1_4wbdo")]([ExtResource("2_5lrtk")])
+available_characters = Array[ExtResource("1_4wbdo")]([ExtResource("2_ahado"), ExtResource("2_5lrtk")])
 stat_pool = Array[ExtResource("3_5lrtk")]([SubResource("Resource_ahado"), SubResource("Resource_4vhv4"), SubResource("Resource_lwilm"), SubResource("Resource_vqnj1"), SubResource("Resource_18bn7"), SubResource("Resource_qc5fd")])
 metadata/_custom_type_script = "uid://bx3ot0532jyrg"

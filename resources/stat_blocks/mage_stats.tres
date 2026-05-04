@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_dg5fe")
+move_speed = 315.0
 casting_multiplier = 1.5
 metadata/_custom_type_script = "uid://c8wxhbgikceud"

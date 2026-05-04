@@ -18,11 +18,16 @@ func _ready() -> void:
 	await actor.ready
 	
 	party_manager.character_switched.connect(_on_character_switched)
-	actor.death_animation_finished.connect(func(): get_tree().reload_current_scene.call_deferred())
+	actor.death_animation_finished.connect(func(): 
+		PoolManager.clear_pools() # CLEANUP BEFORE RELOAD
+		get_tree().reload_current_scene.call_deferred()
+	)
 	
 	# Load Test Party
 	party_manager.add_character(load("res://resources/characters/char_archer.tres"))
-	party_manager.add_character(load("res://resources/characters/char_swordsman.tres"))
+	#party_manager.add_character(load("res://resources/characters/char_mage.tres"))
+	#party_manager.add_character(load("res://resources/characters/char_swordsman.tres"))
+	#party_manager.add_character(load("res://resources/characters/char_priest.tres"))
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

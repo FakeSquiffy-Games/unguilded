@@ -14,6 +14,8 @@ var max_health: int
 
 var is_immobilized: bool = false
 var can_attack: bool = true
+var is_dashing: bool = false 
+var is_invincible: bool = false
 
 var active_skill: SkillCommand
 var pending_action: StringName = &""
@@ -36,14 +38,22 @@ func initialize_stats(base_stats: StatBlock) -> void:
 	current_health = max_health
 
 func move(direction: Vector2, delta: float) -> void:
+	if is_dashing:
+		move_and_slide()
+		return
+	
 	if not is_immobilized:
-		velocity = direction * stat_manager.final_speed
+		var current_speed = stat_manager.final_speed
+		if active_skill:
+			current_speed *= active_skill.move_speed_multiplier
+			
+		velocity = direction * current_speed
+		
 		if direction.length() > 0:
 			state_chart.send_event("movement_started")
 		else:
 			state_chart.send_event("movement_stopped")
 	else:
-		# Recoil / Hitstun friction
 		velocity = velocity.move_toward(Vector2.ZERO, 1500 * delta)
 		state_chart.send_event("movement_stopped")
 	
@@ -86,6 +96,8 @@ func request_hold_release(action_name: String) -> void:
 		state_chart.send_event("skill_recovery")
 
 func take_damage(result: CombatResolver.CombatResult) -> void:
+	if is_invincible: return
+	
 	current_health -= int(result.final_damage)
 	velocity += result.knockback
 	
@@ -104,11 +116,22 @@ func _connect_state_chart() -> void:
 	
 	combat.get_node("Neutral").state_entered.connect(func(): 
 		can_attack = true; is_immobilized = false
+		
+		# NEW: Clean up all combat states upon finishing an attack
+		active_skill = null
+		is_dashing = false
+		is_invincible = false
+		
 		if _state_timer_tween: _state_timer_tween.kill()
 	)
 	
 	combat.get_node("Startup").state_entered.connect(func(): 
 		can_attack = false; is_immobilized = false
+		
+		# NEW: Grant I-Frames if the skill demands it
+		if active_skill and active_skill.grants_iframes:
+			is_invincible = true
+			
 		_start_scaled_timer((active_skill.startup_frames / 60.0) if active_skill else 0.2, "skill_active")
 	)
 	

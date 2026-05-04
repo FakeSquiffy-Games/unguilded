@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_s14wm")
 move_speed = 350.0
+knockback_resistance = 0.2
 metadata/_custom_type_script = "uid://c8wxhbgikceud"

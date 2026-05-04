@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatBlock" format=3 uid="uid://cf7e5pwx0itx7"]
+
+[ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="1_n137n"]
+
+[resource]
+script = ExtResource("1_n137n")
+damage_multiplier = 0.8
+casting_multiplier = 1.5
+knockback_resistance = 0.5
+metadata/_custom_type_script = "uid://c8wxhbgikceud"

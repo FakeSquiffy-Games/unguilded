@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://om48rm28xx27"]
+
+[ext_resource type="Script" uid="uid://g846cubkdhf8" path="res://scripts/skills/skill_command.gd" id="1_3bo00"]
+[ext_resource type="Resource" uid="uid://cf7e5pwx0itx7" path="res://resources/stat_blocks/priest_stats.tres" id="1_wph78"]
+[ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="2_un86y"]
+[ext_resource type="Script" uid="uid://bin0i5r3m32id" path="res://scripts/skills/commands/aoe_command.gd" id="3_77dwt"]
+[ext_resource type="PackedScene" uid="uid://ch47wtn718v32" path="res://scenes/projectiles/aoe_zone.tscn" id="4_tsxme"]
+[ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="5_qmlkh"]
+[ext_resource type="Script" uid="uid://ko4dgc7psvca" path="res://scripts/skills/commands/buff_command.gd" id="6_jqc70"]
+[ext_resource type="SpriteFrames" uid="uid://dk16dg7oysa2c" path="res://resources/frames/priest_frames.tres" id="8_63qd4"]
+
+[sub_resource type="Resource" id="Resource_12ftv"]
+script = ExtResource("3_77dwt")
+zone_scene = ExtResource("4_tsxme")
+attach_to_actor = true
+clears_enemy_projectiles = true
+skill_type = 1
+base_regen = 20.0
+metadata/_custom_type_script = "uid://bin0i5r3m32id"
+
+[sub_resource type="Resource" id="Resource_uce2b"]
+script = ExtResource("5_qmlkh")
+max_health = 0
+move_speed = 0.0
+damage_multiplier = 0.5
+casting_multiplier = 0.5
+metadata/_custom_type_script = "uid://c8wxhbgikceud"
+
+[sub_resource type="Resource" id="Resource_wph78"]
+script = ExtResource("6_jqc70")
+buff_stats = SubResource("Resource_uce2b")
+buff_duration = 8.0
+skill_type = 2
+metadata/_custom_type_script = "uid://ko4dgc7psvca"
+
+[resource]
+script = ExtResource("2_un86y")
+character_name = &"Priest"
+sprite_frames = ExtResource("8_63qd4")
+base_stats = ExtResource("1_wph78")
+left_hold_tiers = Array[ExtResource("1_3bo00")]([SubResource("Resource_12ftv")])
+right_hold_tiers = Array[ExtResource("1_3bo00")]([SubResource("Resource_wph78")])
+metadata/_custom_type_script = "uid://bspyq1k51lov"

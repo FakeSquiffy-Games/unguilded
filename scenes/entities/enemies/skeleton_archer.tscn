@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bs3faquiioev" path="res://scripts/entities/enemies/skeleton_archer_brain.gd" id="2_xcawc"]
 [ext_resource type="SpriteFrames" uid="uid://dn3m6y3ofvb13" path="res://resources/frames/skeleton_archer_frames.tres" id="2_yr3qw"]
 [ext_resource type="Resource" uid="uid://cakrsulkl6hdo" path="res://resources/stat_blocks/skeleton_archer_stats.tres" id="3_ufv37"]
-[ext_resource type="PackedScene" uid="uid://c5d4ci535m5mo" path="res://scenes/projectiles/arrow.tscn" id="4_dpctk"]
+[ext_resource type="PackedScene" uid="uid://d36bst1k7330" path="res://scenes/projectiles/enemy_arrow.tscn" id="4_c20nt"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="4_ufv37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij46s"]
@@ -12,7 +12,7 @@ radius = 50.0
 
 [sub_resource type="Resource" id="Resource_q4euf"]
 script = ExtResource("4_ufv37")
-projectile_scene = ExtResource("4_dpctk")
+projectile_scene = ExtResource("4_c20nt")
 collision_layer = 16
 collision_mask = 5
 energy_requirement = 0.0

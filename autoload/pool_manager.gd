@@ -7,21 +7,36 @@ var _pools: Dictionary = {}
 func acquire(scene: PackedScene) -> Node:
 	var path = scene.resource_path
 	if not _pools.has(path):
-		_register_pool(scene, 15) # Auto-register if it doesn't exist
+		_register_pool(scene, 15)
 		
 	var pool: Dictionary = _pools[path]
 	var inactive: Array = pool["inactive"]
-	var instance: Node
+	var instance: Node = null
 	
-	if inactive.size() > 0:
-		instance = inactive.pop_back()
-	else:
+	# FIX: Loop until we find a VALID instance or the array is empty
+	while inactive.size() > 0:
+		var candidate = inactive.pop_back()
+		if is_instance_valid(candidate):
+			instance = candidate
+			break
+	
+	# If no valid instances were found in the pool, make a new one
+	if instance == null:
 		instance = scene.instantiate()
-		instance.set_meta("pool_scene", scene) # Stamp it with its creator scene
+		instance.set_meta("pool_scene", scene)
 		add_child(instance)
 		
 	_wake_instance(instance)
 	return instance
+
+func clear_pools() -> void:
+	for path in _pools:
+		var pool = _pools[path]
+		for node in pool["inactive"]:
+			if is_instance_valid(node):
+				node.queue_free()
+		pool["inactive"].clear()
+	_pools.clear()
 
 func release(instance: Node) -> void:
 	if not instance.has_meta("pool_scene"):

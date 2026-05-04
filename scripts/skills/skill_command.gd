@@ -20,6 +20,10 @@ enum SkillType { TAP, HOLD_CONTINUOUS, HOLD_CHARGE }
 @export var active_frames: int = 2
 @export var recovery_frames: int = 4
 
+@export_group("Modifiers")
+@export var move_speed_multiplier: float = 1.0
+@export var grants_iframes: bool = false
+
 # Called on Tap, or when Hold begins
 func execute_effect(actor: Node2D, target_dir: Vector2, slot_data: Dictionary) -> void:
 	pass

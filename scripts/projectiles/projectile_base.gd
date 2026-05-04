@@ -11,7 +11,7 @@ var is_active_projectile: bool = false # The elegant lifecycle lock
 var lifetime_timer: float = 0.0 # Failsafe
 
 @onready var screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
-@onready var sprite: AnimatedSprite2D = $Sprite
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	screen_notifier.screen_exited.connect(_on_screen_exited)

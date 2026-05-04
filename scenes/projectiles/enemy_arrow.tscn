@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d36bst1k7330"]
+
+[ext_resource type="PackedScene" uid="uid://c4yc4jiu24b6v" path="res://scenes/projectiles/projectile_base.tscn" id="1_rw1gr"]
+[ext_resource type="Texture2D" uid="uid://nehqeovtk1ro" path="res://assets/sprites/Tiny RPG Character Asset Pack v1.03/Arrow(Projectile)/Arrow03(100x100).png" id="2_invij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq1gl"]
+atlas = ExtResource("2_invij")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnnrj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq1gl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jihs"]
+size = Vector2(20, 7)
+
+[node name="EnemyArrow" unique_id=2054169857 instance=ExtResource("1_rw1gr")]
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1127217566]
+sprite_frames = SubResource("SpriteFrames_nnnrj")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=547494064]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_2jihs")

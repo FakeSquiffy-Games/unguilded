@@ -2,26 +2,50 @@
 
 [ext_resource type="Resource" uid="uid://dpjioiqlmhn1q" path="res://resources/stat_blocks/archer_stats.tres" id="1_p2agx"]
 [ext_resource type="Script" uid="uid://g846cubkdhf8" path="res://scripts/skills/skill_command.gd" id="2_lg3cj"]
-[ext_resource type="PackedScene" uid="uid://c5d4ci535m5mo" path="res://scenes/projectiles/arrow.tscn" id="2_sl54k"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="3_p2agx"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_a6b1f"]
 [ext_resource type="SpriteFrames" uid="uid://cdjtnippfol3p" path="res://resources/frames/archer_frames.tres" id="5_p2agx"]
+[ext_resource type="PackedScene" uid="uid://drnu6sgy48di" path="res://scenes/projectiles/player_arrow.tscn" id="5_re1c7"]
+[ext_resource type="Script" uid="uid://oil3kb8qfjhb" path="res://scripts/skills/commands/movement_command.gd" id="5_ta1n3"]
+[ext_resource type="PackedScene" uid="uid://dxx788wy1c3ie" path="res://scenes/projectiles/golden_arrow.tscn" id="6_i5rdd"]
 
 [sub_resource type="Resource" id="Resource_ta1n3"]
 script = ExtResource("3_p2agx")
-projectile_scene = ExtResource("2_sl54k")
-fire_rate = 0.3
-skill_type = 1
-energy_requirement = 50.0
-base_regen = 2.0
+projectile_scene = ExtResource("5_re1c7")
+projectile_count = 3
+spread_angle = 30.0
+skill_type = 2
+base_regen = 10.0
+base_damage = 20.0
+knockback_force = 325.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
 [sub_resource type="Resource" id="Resource_52cg8"]
 script = ExtResource("3_p2agx")
-projectile_scene = ExtResource("2_sl54k")
-base_damage = 20.0
+projectile_scene = ExtResource("5_re1c7")
+base_damage = 40.0
 knockback_force = 350.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
+
+[sub_resource type="Resource" id="Resource_284u6"]
+script = ExtResource("3_p2agx")
+projectile_scene = ExtResource("6_i5rdd")
+speed = 1000.0
+is_piercing = true
+skill_type = 2
+base_regen = 1.0
+base_damage = 100.0
+knockback_force = 500.0
+metadata/_custom_type_script = "uid://byisi4g83p2ta"
+
+[sub_resource type="Resource" id="Resource_ti2er"]
+script = ExtResource("5_ta1n3")
+dash_speed = 700.0
+direction_type = 1
+base_damage = 0.0
+knockback_force = 0.0
+grants_iframes = true
+metadata/_custom_type_script = "uid://oil3kb8qfjhb"
 
 [resource]
 script = ExtResource("4_a6b1f")
@@ -30,3 +54,5 @@ sprite_frames = ExtResource("5_p2agx")
 base_stats = ExtResource("1_p2agx")
 left_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_52cg8")])
 left_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ta1n3")])
+right_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ti2er")])
+right_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_284u6")])
