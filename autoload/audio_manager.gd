@@ -4,9 +4,13 @@ extends Node
 
 ## Dictionary to map string names to your audio files.
 ## (Update these paths when your partner imports the actual assets!)
+## Format: "title": preload("path/to/wav")
 var sounds: Dictionary = {
-
+	"title_music": preload("res://assets/audio/xDeviruchi - 16 bit Fantasy & Adventure (2025)/wav/03 - Definitely Our Town.wav"),
+	"sword_slash": preload("res://assets/audio/400 Sounds Pack/Weapons/sword_slice.wav"),
+	"battle_music": preload("res://assets/audio/xDeviruchi - 16 bit Fantasy & Adventure (2025)/wav/04 - Silent Forest.wav")
 }
+
 
 ## Dictionary of active sounds for ambience and intro.
 var _active_players: Dictionary = {}

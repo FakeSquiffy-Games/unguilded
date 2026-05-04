@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuup86j87iwdt"
+path="res://.godot/imported/09 - Battle 2.wav-0da0a4a6b41a235e7f968e3d61d2ce98.sample"
+
+[deps]
+
+source_file="res://assets/audio/xDeviruchi - 16 bit Fantasy & Adventure (2025)/wav/09 - Battle 2.wav"
+dest_files=["res://.godot/imported/09 - Battle 2.wav-0da0a4a6b41a235e7f968e3d61d2ce98.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

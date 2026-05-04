@@ -28,21 +28,25 @@ func _ready():
 	frame_three.visible = false
 	frame_four.visible = false
 	frame_five.visible = false
+	AudioManager.play_ui_sound("title_music")
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo and not transitioning:
 		transitioning = true
+		AudioManager.stop_sound_fade("title_music", 1.0)
 		if intro_anim.is_playing():
 			var anim = intro_anim.get_animation(intro_anim.current_animation)
 			anim.loop_mode = Animation.LOOP_NONE 
 			await intro_anim.animation_finished
 		intro_anim.play("intro")
 		await intro_anim.animation_finished
+		AudioManager.play_ui_sound("sword_slash", 20.0)
 		_start_transition()
 
 # TitleScreen.gd
 func _start_transition():
 	# 1. Impact frames
+	
 	transition_anim.play("impact")
 	await transition_anim.animation_finished
 
@@ -69,6 +73,5 @@ func _start_transition():
 		 .set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 
 	await tween.finished
-
 	# 5. Clean up the autoload nodes
 	TransitionHolder.release()
