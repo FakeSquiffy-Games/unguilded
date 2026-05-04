@@ -4,10 +4,7 @@
 [ext_resource type="Script" uid="uid://cbhlthod0nwgh" path="res://scripts/arena/arena.gd" id="1_8trdl"]
 [ext_resource type="Texture2D" uid="uid://bof0astlntv6v" path="res://assets/background/Ninja Adventure/TilesetNature.png" id="2_tp84n"]
 [ext_resource type="Texture2D" uid="uid://db50ed7y7wy0m" path="res://assets/background/Ninja Adventure/TilesetReliefDetail.png" id="3_8kk48"]
-[ext_resource type="PackedScene" uid="uid://cjn87osxsr1qu" path="res://scenes/entities/enemies/slime.tscn" id="4_asdgj"]
 [ext_resource type="Texture2D" uid="uid://b15taud3f6kxo" path="res://assets/background/Ninja Adventure/TilesetVillageAbandoned.png" id="5_fir7s"]
-[ext_resource type="PackedScene" uid="uid://dfucesjnabhjo" path="res://scenes/entities/enemies/skeleton_archer.tscn" id="5_jx0ua"]
-[ext_resource type="Script" uid="uid://bgroi8sydx5nb" path="res://scripts/systems/wave_rule.gd" id="5_xgbxb"]
 [ext_resource type="Script" uid="uid://m7q8k2i3qifh" path="res://scripts/systems/wave_manager.gd" id="6_2ml6w"]
 [ext_resource type="Texture2D" uid="uid://fp8y72shxpo0" path="res://assets/background/Ninja Adventure/TilesetWater.png" id="6_gy0qm"]
 [ext_resource type="Texture2D" uid="uid://2wqfs6qih57b" path="res://assets/background/Ninja Adventure/tileset_camp.png" id="7_dh340"]
@@ -21,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://hw1eyg10ioh3" path="res://assets/background/Ninja Adventure/TilesetFloor.png" id="11_bxbl0"]
 [ext_resource type="Texture2D" uid="uid://bt58jr7iab6lj" path="res://assets/background/Ninja Adventure/TilesetFloorDetail.png" id="13_o7rjm"]
 [ext_resource type="Texture2D" uid="uid://bwsmvlv7rymg7" path="res://assets/background/Ninja Adventure/TilesetHouse.png" id="14_xr6px"]
+[ext_resource type="Script" uid="uid://bgroi8sydx5nb" path="res://scripts/systems/wave_rule.gd" id="17_dh340"]
+[ext_resource type="PackedScene" uid="uid://cjn87osxsr1qu" path="res://scenes/entities/enemies/slime.tscn" id="18_l0cts"]
+[ext_resource type="PackedScene" uid="uid://dfucesjnabhjo" path="res://scenes/entities/enemies/skeleton_archer.tscn" id="19_ybinm"]
 [ext_resource type="PackedScene" uid="uid://bjc1euvt3s42d" path="res://scenes/ui/loot_screen.tscn" id="22_gy0qm"]
 [ext_resource type="Resource" uid="uid://c0okucwjjmwjg" path="res://resources/upgrades/main_loot_table.tres" id="23_dh340"]
 
@@ -2796,21 +2796,25 @@ sources/15 = SubResource("TileSetAtlasSource_lg6rl")
 sources/16 = SubResource("TileSetAtlasSource_qd24e")
 sources/18 = SubResource("TileSetAtlasSource_pc1hj")
 
-[sub_resource type="Resource" id="Resource_fv88w"]
-script = ExtResource("5_xgbxb")
+[sub_resource type="Resource" id="Resource_5ilg6"]
+script = ExtResource("17_dh340")
 max_wave = 3
-enemy_weights = Dictionary[PackedScene, float]({
-ExtResource("4_asdgj"): 1.0
+base_wave_points = 5
+point_per_wave = 1
+enemy_costs = Dictionary[PackedScene, int]({
+ExtResource("18_l0cts"): 1
 })
 metadata/_custom_type_script = "uid://bgroi8sydx5nb"
 
-[sub_resource type="Resource" id="Resource_w4nra"]
-script = ExtResource("5_xgbxb")
+[sub_resource type="Resource" id="Resource_bxbl0"]
+script = ExtResource("17_dh340")
 min_wave = 4
 max_wave = 10
-enemy_weights = Dictionary[PackedScene, float]({
-ExtResource("4_asdgj"): 0.6,
-ExtResource("5_jx0ua"): 0.4
+base_wave_points = 10
+point_per_wave = 2
+enemy_costs = Dictionary[PackedScene, int]({
+ExtResource("18_l0cts"): 1,
+ExtResource("19_ybinm"): 3
 })
 metadata/_custom_type_script = "uid://bgroi8sydx5nb"
 
@@ -2921,9 +2925,12 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_1qjuf")
 
+[node name="LootScreen" parent="." unique_id=2002525306 instance=ExtResource("22_gy0qm")]
+loot_table = ExtResource("23_dh340")
+
 [node name="WaveManager" type="Node" parent="." unique_id=222404524 node_paths=PackedStringArray("state_chart", "spawn_points_parent")]
 script = ExtResource("6_2ml6w")
-wave_rules = Array[ExtResource("5_xgbxb")]([SubResource("Resource_fv88w"), SubResource("Resource_w4nra")])
+wave_rules = Array[ExtResource("17_dh340")]([SubResource("Resource_5ilg6"), SubResource("Resource_bxbl0")])
 state_chart = NodePath("StateChart")
 spawn_points_parent = NodePath("../SpawnPoints")
 metadata/_custom_type_script = "uid://m7q8k2i3qifh"
@@ -2962,6 +2969,3 @@ script = ExtResource("10_fv88w")
 to = NodePath("../../Waiting")
 event = &"setup_next_wave"
 delay_in_seconds = "0.0"
-
-[node name="LootScreen" parent="." unique_id=2002525306 instance=ExtResource("22_gy0qm")]
-loot_table = ExtResource("23_dh340")
