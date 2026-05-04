@@ -3,10 +3,17 @@ extends Node2D
 
 @onready var top_image    		= $TopImage
 @onready var bottom_image 		= $BottomImage
-@onready var transition_anim    = $TransitionLayer/AnimationPlayer
+
 @onready var intro_anim    		= $BackgroundLayers/AnimationPlayer
-@onready var white_flash  		= $TransitionLayer/ImpactFrames/WhiteFlash
-@onready var black_flash  		= $TransitionLayer/ImpactFrames/BlackFlash
+@onready var label    			= $BackgroundLayers/Press
+
+@onready var transition_anim    = $TransitionLayer/AnimationPlayer
+@onready var frame_one  		= $TransitionLayer/ImpactFrames/Layer
+@onready var frame_two  		= $TransitionLayer/ImpactFrames/Layer2
+@onready var frame_three  		= $TransitionLayer/ImpactFrames/Layer3
+@onready var frame_four  		= $TransitionLayer/ImpactFrames/Layer4
+@onready var frame_five  		= $TransitionLayer/ImpactFrames/Layer5
+
 
 # Preload so there's zero stall when we swap
 var game_scene = preload("res://scenes/arena/arena.tscn")
@@ -16,12 +23,21 @@ var transitioning = false
 func _ready():
 	top_image.visible    = false
 	bottom_image.visible = false
-	white_flash.visible  = false
-	black_flash.visible  = false
+	frame_one.visible = false
+	frame_two.visible = false
+	frame_three.visible = false
+	frame_four.visible = false
+	frame_five.visible = false
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo and not transitioning:
 		transitioning = true
+		if intro_anim.is_playing():
+			var anim = intro_anim.get_animation(intro_anim.current_animation)
+			anim.loop_mode = Animation.LOOP_NONE 
+			await intro_anim.animation_finished
+		intro_anim.play("intro")
+		await intro_anim.animation_finished
 		_start_transition()
 
 # TitleScreen.gd

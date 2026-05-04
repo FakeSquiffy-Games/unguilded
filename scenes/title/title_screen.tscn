@@ -1,18 +1,28 @@
 [gd_scene format=3 uid="uid://blt0qrw8xe0w6"]
 
-[ext_resource type="Texture2D" uid="uid://vjak24kek86a" path="res://assets/title/0.png" id="1_7lh0t"]
+[ext_resource type="Texture2D" uid="uid://xxkplyxvurf5" path="res://assets/title/0.png" id="1_7lh0t"]
 [ext_resource type="Script" uid="uid://hr7tioymiqc1" path="res://scripts/title/title_screen.gd" id="1_noexq"]
-[ext_resource type="Texture2D" uid="uid://ddgptvml1j7te" path="res://assets/title/1.png" id="2_7mtuq"]
-[ext_resource type="Texture2D" uid="uid://d0eiqrfmdj5bb" path="res://assets/title/2.png" id="3_cbsym"]
-[ext_resource type="Texture2D" uid="uid://bs5uro56wxpyv" path="res://assets/title/3.png" id="4_noexq"]
-[ext_resource type="Texture2D" uid="uid://u64uu74xlxrm" path="res://assets/title/4.png" id="5_1m6id"]
-[ext_resource type="Texture2D" uid="uid://btr4ok8jog1en" path="res://assets/title/5.png" id="6_73nhm"]
-[ext_resource type="Texture2D" uid="uid://don3svmy62uho" path="res://assets/title/6.png" id="7_8onup"]
-[ext_resource type="Texture2D" uid="uid://bl5y3xgjr8kf7" path="res://assets/title/7.png" id="8_e2nmu"]
-[ext_resource type="Texture2D" uid="uid://bm3nb50hcaeby" path="res://assets/title/8.png" id="9_7y15r"]
-[ext_resource type="Texture2D" uid="uid://bjj8unydbospv" path="res://assets/title/9.png" id="10_qkiax"]
-[ext_resource type="Texture2D" uid="uid://uh0q36v5ddv5" path="res://assets/title/top_half.png" id="11_cbsym"]
-[ext_resource type="Texture2D" uid="uid://l0x2ghx0lcss" path="res://assets/title/bottom_half.png" id="12_noexq"]
+[ext_resource type="Texture2D" uid="uid://ccgtyycy42e7q" path="res://assets/title/1.png" id="2_7mtuq"]
+[ext_resource type="Texture2D" uid="uid://db6pdyl17vbfy" path="res://assets/title/2.png" id="3_cbsym"]
+[ext_resource type="Texture2D" uid="uid://bqcfgv8qpov0w" path="res://assets/title/3.png" id="4_noexq"]
+[ext_resource type="Texture2D" uid="uid://dvwp2o13f0o4j" path="res://assets/title/4.png" id="5_1m6id"]
+[ext_resource type="Texture2D" uid="uid://jmm824qlbxcs" path="res://assets/title/5.png" id="6_73nhm"]
+[ext_resource type="Texture2D" uid="uid://hpmtpgxarmh0" path="res://assets/title/6.png" id="7_8onup"]
+[ext_resource type="Texture2D" uid="uid://bxmxogwoobamr" path="res://assets/title/7.png" id="8_e2nmu"]
+[ext_resource type="Texture2D" uid="uid://jtd1soavrtdp" path="res://assets/title/8.png" id="9_7y15r"]
+[ext_resource type="Texture2D" uid="uid://d2q6u7nx06tx" path="res://assets/title/9.png" id="10_qkiax"]
+[ext_resource type="Texture2D" uid="uid://cblhjgg3vomk8" path="res://assets/title/top_half.png" id="11_cbsym"]
+[ext_resource type="FontFile" uid="uid://phtcw04wyudu" path="res://assets/font/DungeonFont.ttf" id="12_1m6id"]
+[ext_resource type="Texture2D" uid="uid://dm6d7pxr3o0eb" path="res://assets/title/bottom_half.png" id="12_noexq"]
+[ext_resource type="Texture2D" uid="uid://c7pxkm1kqibek" path="res://assets/title/frame_0.png" id="15_e2nmu"]
+[ext_resource type="Texture2D" uid="uid://4rjvx2jfcf6n" path="res://assets/title/frame_1.png" id="16_7y15r"]
+[ext_resource type="Texture2D" uid="uid://dup4xxxw7kpk5" path="res://assets/title/frame_2.png" id="17_qkiax"]
+[ext_resource type="Texture2D" uid="uid://7illolqvr5si" path="res://assets/title/frame_3.png" id="18_qkiax"]
+[ext_resource type="Texture2D" uid="uid://cs6fj5xixjo63" path="res://assets/title/frame_4.png" id="19_6g7h4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_73nhm"]
+font = ExtResource("12_1m6id")
+font_size = 72
 
 [sub_resource type="Animation" id="Animation_73nhm"]
 length = 0.001
@@ -123,6 +133,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.37254903)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Press:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8onup"]
@@ -237,11 +259,64 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0.37254903), Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Press:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.31764707), Color(1, 1, 1, 1), Color(1, 1, 1, 0.31764707)]
+}
+
+[sub_resource type="Animation" id="Animation_e2nmu"]
+resource_name = "intro"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Press:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layer7:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 12), Vector2(0, -1600)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Layer8:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 12), Vector2(0, -1600)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e2nmu"]
 _data = {
 &"RESET": SubResource("Animation_73nhm"),
-&"idle": SubResource("Animation_8onup")
+&"idle": SubResource("Animation_8onup"),
+&"intro": SubResource("Animation_e2nmu")
 }
 
 [sub_resource type="Animation" id="Animation_noexq"]
@@ -249,7 +324,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ImpactFrames/WhiteFlash:visible")
+tracks/0/path = NodePath("ImpactFrames/Layer3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -261,42 +336,114 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ImpactFrames/BlackFlash:visible")
+tracks/1/path = NodePath("ImpactFrames/Layer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ImpactFrames/Layer2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ImpactFrames/Layer4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ImpactFrames/Layer5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_1m6id"]
 resource_name = "impact"
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ImpactFrames/WhiteFlash:visible")
+tracks/0/path = NodePath("ImpactFrames/Layer3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, false, true, false, true, false, false]
+"values": [true, false, false, false, false, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ImpactFrames/BlackFlash:visible")
+tracks/1/path = NodePath("ImpactFrames/Layer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, false, false, false]
+"values": [false, true, false, false, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ImpactFrames/Layer2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ImpactFrames/Layer4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ImpactFrames/Layer5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_73nhm"]
@@ -344,6 +491,14 @@ texture = ExtResource("9_7y15r")
 modulate = Color(1, 1, 1, 0.37254903)
 texture = ExtResource("10_qkiax")
 
+[node name="Press" type="Label" parent="BackgroundLayers" unique_id=794032776]
+offset_left = -325.0
+offset_top = 300.0
+offset_right = 328.0
+offset_bottom = 373.0
+text = "Press Anything to Start"
+label_settings = SubResource("LabelSettings_73nhm")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers" unique_id=91430785]
 libraries/ = SubResource("AnimationLibrary_e2nmu")
 autoplay = &"idle"
@@ -363,19 +518,25 @@ layer = 10
 
 [node name="ImpactFrames" type="Node2D" parent="TransitionLayer" unique_id=1271349640]
 
-[node name="WhiteFlash" type="ColorRect" parent="TransitionLayer/ImpactFrames" unique_id=615257513]
-offset_left = -47.0
-offset_top = -68.0
-offset_right = 1993.0
-offset_bottom = 1132.0
+[node name="Layer" type="Sprite2D" parent="TransitionLayer/ImpactFrames" unique_id=277411121]
+position = Vector2(973, 532)
+texture = ExtResource("15_e2nmu")
 
-[node name="BlackFlash" type="ColorRect" parent="TransitionLayer/ImpactFrames" unique_id=1985313345]
-visible = false
-offset_left = -47.0
-offset_top = -68.0
-offset_right = 1994.0
-offset_bottom = 1132.0
-color = Color(0, 0, 0, 1)
+[node name="Layer2" type="Sprite2D" parent="TransitionLayer/ImpactFrames" unique_id=1694362317]
+position = Vector2(973, 532)
+texture = ExtResource("16_7y15r")
+
+[node name="Layer3" type="Sprite2D" parent="TransitionLayer/ImpactFrames" unique_id=895122127]
+position = Vector2(973, 532)
+texture = ExtResource("17_qkiax")
+
+[node name="Layer4" type="Sprite2D" parent="TransitionLayer/ImpactFrames" unique_id=1917530705]
+position = Vector2(973, 532)
+texture = ExtResource("18_qkiax")
+
+[node name="Layer5" type="Sprite2D" parent="TransitionLayer/ImpactFrames" unique_id=969483031]
+position = Vector2(973, 532)
+texture = ExtResource("19_6g7h4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer" unique_id=2107997644]
 libraries/ = SubResource("AnimationLibrary_73nhm")
