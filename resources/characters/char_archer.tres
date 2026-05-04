@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="3_p2agx"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_a6b1f"]
 [ext_resource type="SpriteFrames" uid="uid://cdjtnippfol3p" path="res://resources/frames/archer_frames.tres" id="5_p2agx"]
+[ext_resource type="Texture2D" uid="uid://dtmorsopgwf58" path="res://assets/hud/Tiny RPG Character Asset Pack v1.03/archer.png" id="5_ta1n3"]
 
 [sub_resource type="Resource" id="Resource_ta1n3"]
 script = ExtResource("3_p2agx")
@@ -28,5 +29,6 @@ script = ExtResource("4_a6b1f")
 character_name = &"Archer"
 sprite_frames = ExtResource("5_p2agx")
 base_stats = ExtResource("1_p2agx")
+portrait = ExtResource("5_ta1n3")
 left_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_52cg8")])
 left_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ta1n3")])

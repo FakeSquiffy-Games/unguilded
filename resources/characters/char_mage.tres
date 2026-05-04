@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="3_45s7j"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_sajg6"]
 [ext_resource type="PackedScene" uid="uid://s2b0evf7ypmu" path="res://scenes/projectiles/fireball.tscn" id="4_uoagk"]
+[ext_resource type="Texture2D" uid="uid://c24ged3y2q1f7" path="res://assets/hud/Tiny RPG Character Asset Pack v1.03/wizard.png" id="5_5ivp0"]
 [ext_resource type="SpriteFrames" uid="uid://dvkx8gdmq16m6" path="res://resources/frames/mage_frames.tres" id="5_45s7j"]
 
 [sub_resource type="Resource" id="Resource_uoagk"]
@@ -33,5 +34,6 @@ script = ExtResource("4_sajg6")
 character_name = &"Mage"
 sprite_frames = ExtResource("5_45s7j")
 base_stats = ExtResource("1_45s7j")
+portrait = ExtResource("5_5ivp0")
 left_tap_tiers = Array[ExtResource("2_od0ls")]([SubResource("Resource_5ivp0")])
 left_hold_tiers = Array[ExtResource("2_od0ls")]([SubResource("Resource_uoagk")])

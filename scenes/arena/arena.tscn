@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="10_fv88w"]
 [ext_resource type="Texture2D" uid="uid://hw1eyg10ioh3" path="res://assets/background/Ninja Adventure/TilesetFloor.png" id="11_bxbl0"]
 [ext_resource type="Texture2D" uid="uid://bt58jr7iab6lj" path="res://assets/background/Ninja Adventure/TilesetFloorDetail.png" id="13_o7rjm"]
+[ext_resource type="PackedScene" uid="uid://cpk37ry7tqpmh" path="res://scenes/hud/hud.tscn" id="14_l0cts"]
 [ext_resource type="Texture2D" uid="uid://bwsmvlv7rymg7" path="res://assets/background/Ninja Adventure/TilesetHouse.png" id="14_xr6px"]
 [ext_resource type="Script" uid="uid://bgroi8sydx5nb" path="res://scripts/systems/wave_rule.gd" id="17_dh340"]
 [ext_resource type="PackedScene" uid="uid://cjn87osxsr1qu" path="res://scenes/entities/enemies/slime.tscn" id="18_l0cts"]
@@ -2925,6 +2926,8 @@ zoom = Vector2(1.8, 1.8)
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_1qjuf")
+
+[node name="HUD" parent="MainCamera" unique_id=98623790 instance=ExtResource("14_l0cts")]
 
 [node name="LootScreen" parent="." unique_id=2002525306 instance=ExtResource("22_gy0qm")]
 loot_table = ExtResource("23_dh340")
