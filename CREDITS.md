@@ -10,6 +10,8 @@
 - [vrtxrry](https://vrtxrry.itch.io/dungeonfont) - Font
 - [xDeviruchi](https://xdeviruchi.itch.io/16-bit-fantasy-adventure-music-pack) - Background Music
 - [Chequered Ink](https://ci.itch.io/400-sounds-pack) - Sound Effects
+- [Sr. Toasty](https://srtoasty.itch.io/ui-assets-pack-srt) - Book and UI Assets
+
     
 ## Licenses
 **Craftpix**
