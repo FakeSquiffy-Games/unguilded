@@ -5,7 +5,8 @@
 - [Pixabay](https://pixabay.com/) - Free Sound effects
 
 ## More Assets
-
+- [Zerie](https://zerie.itch.io/tiny-rpg-character-asset-pack) - Character, Enemy, and Projectile Sprites
+- [pixel-boy](https://pixel-boy.itch.io/ninja-adventure-asset-pack) - Background Assets
     
 ## Licenses
 **Craftpix**
