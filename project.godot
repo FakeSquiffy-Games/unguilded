@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Survivors"
-run/main_scene="uid://du6414cbt8sbm"
+run/main_scene="uid://blt0qrw8xe0w6"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ GameManager="*res://autoload/game_manager.gd"
 PoolManager="*res://autoload/pool_manager.gd"
 AudioManager="*res://autoload/audio_manager.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
+TransitionHolder="*uid://d22ntlw23n333"
 
 [display]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbwqjo0q0vsjn"]
 
-[ext_resource type="Script" uid="uid://vqrhx4tytwah" path="res://scripts/movent_tutorial.gd" id="1_7duqw"]
+[ext_resource type="Script" uid="uid://vqrhx4tytwah" path="res://scripts/tutorial/movement_tutorial.gd" id="1_7duqw"]
 [ext_resource type="Texture2D" uid="uid://r4btjcwqgoiu" path="res://assets/tutorial/Ninja Adventure/KeyW.png" id="1_fb3nl"]
 [ext_resource type="Texture2D" uid="uid://c2avoe0lkx7vq" path="res://assets/tutorial/Ninja Adventure/KeyA.png" id="2_7duqw"]
 [ext_resource type="Texture2D" uid="uid://wladwt54ntb4" path="res://assets/tutorial/Ninja Adventure/KeyS.png" id="3_b8a1b"]
