@@ -6,6 +6,7 @@ var player_instance
 
 func _ready() -> void:
 	_spawn_player()
+	AudioManager.play_ui_sound("battle_music")
 
 func _spawn_player() -> void:
 	player_instance = player_scene.instantiate() as Actor

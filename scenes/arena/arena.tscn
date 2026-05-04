@@ -2919,6 +2919,7 @@ position = Vector2(636.3961, -636.3961)
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1227517136]
 top_level = true
+zoom = Vector2(1.8, 1.8)
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera" unique_id=1510093907]
 process_priority = 300
