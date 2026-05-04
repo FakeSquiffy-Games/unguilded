@@ -19,6 +19,8 @@ func _physics_process(_delta: float) -> void:
 		_player_exception_set = true
 
 func _on_death_finished() -> void:
+	if actor.is_in_group("enemies"):
+		actor.remove_from_group("enemies")
+	
 	Events.enemy_died.emit(actor)
 	PoolManager.release(actor)
-	actor.get_node("CollisionShape2D").set_deferred("disabled", false)

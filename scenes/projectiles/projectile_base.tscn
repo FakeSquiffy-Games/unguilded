@@ -7,6 +7,7 @@
 radius = 30.0
 
 [node name="ProjectileBase" type="CharacterBody2D" unique_id=2054169857]
+y_sort_enabled = true
 script = ExtResource("1_iupiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1456362360]

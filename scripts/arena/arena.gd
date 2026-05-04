@@ -9,9 +9,6 @@ func _ready() -> void:
 
 func _spawn_player() -> void:
 	player_instance = player_scene.instantiate() as Actor
-	# Spawn in the exact center of the arena
 	player_instance.global_position = Vector2.ZERO 
+	player_instance.add_to_group("player") # Ensure group is set for EnemyBrain
 	add_child(player_instance)
-	
-	# The PhantomCamera2D on the player will automatically detect the MainCamera's 
-	# PhantomCameraHost and take control of it smoothly.

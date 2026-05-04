@@ -159,3 +159,20 @@ func _start_scaled_timer(base_duration: float, event_name: String) -> void:
 		if is_instance_valid(state_chart):
 			state_chart.send_event(event_name)
 	).set_delay(base_duration / mult)
+
+# ----------------------------------------------------------------------
+# POOLING API
+# ----------------------------------------------------------------------
+
+func revive(scaled_stats: StatBlock = null) -> void:
+	if scaled_stats:
+		initialize_stats(scaled_stats)
+	else:
+		initialize_stats(stat_manager.base_stats)
+		
+	is_immobilized = false
+	can_attack = true
+	collision_shape.set_deferred("disabled", false)
+	
+	# Force the state chart out of Death and back to Neutral
+	state_chart.send_event("revive")

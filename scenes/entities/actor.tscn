@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="9_6kqnj"]
 
 [node name="Actor" type="CharacterBody2D" unique_id=1678576432]
+y_sort_enabled = true
 script = ExtResource("1_vn088")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=35610349]
@@ -137,3 +138,9 @@ delay_in_seconds = "0.0"
 
 [node name="Death" type="Node" parent="StateChart/ParallelRoot/CombatRoot" unique_id=1496375833]
 script = ExtResource("8_pf8fk")
+
+[node name="ToNeutral" type="Node" parent="StateChart/ParallelRoot/CombatRoot/Death" unique_id=1890740076]
+script = ExtResource("9_6kqnj")
+to = NodePath("../../Neutral")
+event = &"revive"
+delay_in_seconds = "0.0"

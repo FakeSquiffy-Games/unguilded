@@ -48,9 +48,16 @@ func _register_pool(scene: PackedScene, initial_count: int) -> void:
 
 func _sleep_instance(instance: Node) -> void:
 	instance.process_mode = Node.PROCESS_MODE_DISABLED
-	if instance is CanvasItem: instance.visible = false
+	if instance is CanvasItem: 
+		instance.visible = false
 	instance.position = Vector2(-9999, -9999)
+	
+	# Sleeping nodes should not exist to game logic
+	if instance.is_in_group("enemies"):
+		instance.remove_from_group("enemies")
 
 func _wake_instance(instance: Node) -> void:
 	instance.process_mode = Node.PROCESS_MODE_INHERIT
-	if instance is CanvasItem: instance.visible = true
+	if instance is CanvasItem: 
+		instance.visible = true
+		instance.z_index = 0

@@ -51,6 +51,12 @@ func _fire(actor: Node2D, dir: Vector2, dmg_mult: float = 1.0, override_pierce: 
 	var proj = PoolManager.acquire(projectile_scene)
 	if not proj or not proj.has_method("init_projectile"): return
 	
+	var entities_node = PoolManager.get_tree().current_scene.find_child("Entities", true, false)
+	if entities_node:
+		if proj.get_parent():
+			proj.get_parent().remove_child(proj)
+		entities_node.add_child(proj)
+	
 	var final_stats = StatBlock.new()
 	if actor.has_node("StatManager"):
 		var sm = actor.get_node("StatManager")

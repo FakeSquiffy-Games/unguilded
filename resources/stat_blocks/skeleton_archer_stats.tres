@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_vvdmm")
-max_health = 80
+max_health = 50
 move_speed = 120.0
 metadata/_custom_type_script = "uid://c8wxhbgikceud"
