@@ -51,9 +51,15 @@ func _physics_process(delta: float) -> void:
 		var collider := collision.get_collider()
 		
 		# Obstacle check
-		if collider.collision_layer & 4 != 0: 
-			_despawn()
-			return
+		if collider is TileMapLayer:
+			var collision_mask = collider.tile_set.get_physics_layer_collision_layer(0)
+			if collision_mask & 4 != 0:
+				_despawn()
+				return
+		else:
+			if collider.collision_layer & 4 != 0: 
+				_despawn()
+				return
 		
 		# Interface check (Now works for both Player and Enemies)
 		if collider.has_method("take_damage"):
