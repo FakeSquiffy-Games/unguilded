@@ -30,7 +30,7 @@ const DIMMED_COLOR: Color = Color(0.25, 0.25, 0.25, 1.0)
 func _ready() -> void:
 	print(get_parent().name)
 	print(get_parent().get_children())
-	var portrait_size := Vector2(64, 64)
+	var portrait_size := Vector2(96, 96)
 	for bar in [slot_1, slot_2, slot_3]:
 		if bar:
 			bar.custom_minimum_size = portrait_size
