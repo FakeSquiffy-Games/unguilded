@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://ca1k7hadmg74x"]
+
+[ext_resource type="Script" uid="uid://g846cubkdhf8" path="res://scripts/skills/skill_command.gd" id="1_0t76l"]
+[ext_resource type="Resource" uid="uid://btrrqvbgipd63" path="res://resources/stat_blocks/swordsman_stats.tres" id="1_u8e2s"]
+[ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="2_by6a1"]
+[ext_resource type="SpriteFrames" uid="uid://dhf20kropw0qo" path="res://resources/frames/swordsman_frames.tres" id="3_by6a1"]
+[ext_resource type="PackedScene" uid="uid://dmtj13ucluh8e" path="res://scenes/projectiles/hitbox.tscn" id="3_egaen"]
+[ext_resource type="Script" uid="uid://cfg74m1w04byr" path="res://scripts/skills/commands/melee_command.gd" id="4_px36t"]
+
+[sub_resource type="Resource" id="Resource_u8e2s"]
+script = ExtResource("4_px36t")
+hitbox_scene = ExtResource("3_egaen")
+skill_type = 1
+base_regen = 10.0
+metadata/_custom_type_script = "uid://cfg74m1w04byr"
+
+[sub_resource type="Resource" id="Resource_egaen"]
+script = ExtResource("4_px36t")
+hitbox_scene = ExtResource("3_egaen")
+hitbox_offset = 100.0
+metadata/_custom_type_script = "uid://cfg74m1w04byr"
+
+[resource]
+script = ExtResource("2_by6a1")
+character_name = &"Swordsman"
+sprite_frames = ExtResource("3_by6a1")
+base_stats = ExtResource("1_u8e2s")
+left_tap_tiers = Array[ExtResource("1_0t76l")]([SubResource("Resource_egaen")])
+left_hold_tiers = Array[ExtResource("1_0t76l")]([SubResource("Resource_u8e2s")])
+metadata/_custom_type_script = "uid://bspyq1k51lov"

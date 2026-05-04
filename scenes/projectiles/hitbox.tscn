@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dmtj13ucluh8e"]
+
+[ext_resource type="Script" uid="uid://bfoojijoyvjj4" path="res://scripts/projectiles/hitbox.gd" id="1_lfr5m"]
+[ext_resource type="Texture2D" uid="uid://x65umomnxpyy" path="res://assets/sprites/Tiny RPG Character Asset Pack v1.03/Characters(100x100)/Swordsman/Swordsman(Split Effects)/Swordsman-Attack01_Effect.png" id="2_3elnb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf1lk"]
+size = Vector2(14, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj4w6"]
+atlas = ExtResource("2_3elnb")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1v48"]
+atlas = ExtResource("2_3elnb")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s168u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj4w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1v48")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Hitbox" type="Area2D" unique_id=1548103303]
+z_index = 1
+scale = Vector2(5, 5)
+script = ExtResource("1_lfr5m")
+metadata/_custom_type_script = "uid://bfoojijoyvjj4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040649869]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_rf1lk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1885259829]
+position = Vector2(-10, 10)
+rotation = -1.1034713
+sprite_frames = SubResource("SpriteFrames_s168u")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
