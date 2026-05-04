@@ -15,3 +15,7 @@ signal enemy_died(enemy: Node)
 # Wave Signals
 signal wave_started(wave_num: int)
 signal wave_cleared(wave_num: int)
+
+# Progression Signals
+signal upgrade_applied
+signal resume_wave_sequence

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://2ynyk6ox3phl"]
+
+[ext_resource type="Script" uid="uid://pcwr4mxfchn3" path="res://scripts/ui/upgrade.gd" id="1_jq2e7"]
+
+[node name="UpgradeCard" type="PanelContainer" unique_id=366521604]
+script = ExtResource("1_jq2e7")
+metadata/_custom_type_script = "uid://pcwr4mxfchn3"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=976358733]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1214980005]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1400654832]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=693275428]
+unique_name_in_owner = true
+layout_mode = 2

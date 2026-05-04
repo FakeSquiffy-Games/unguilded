@@ -21,6 +21,7 @@ var spawn_interval: float = 1.5
 func _ready() -> void:
 	if not state_chart or not spawn_points_parent: return
 	Events.enemy_died.connect(_on_enemy_died)
+	Events.resume_wave_sequence.connect(func(): state_chart.send_event("setup_next_wave"))
 	
 	_connect_state("Waiting", _on_waiting_entered)
 	_connect_state("Spawning", func(): pass, _on_spawning_processing)
@@ -102,7 +103,5 @@ func _on_enemy_died(_enemy: Node) -> void:
 		state_chart.send_event("wave_complete")
 
 func _on_wave_cleared_entered() -> void:
+	print("[WaveManager] Wave ", current_wave, " Cleared! Waiting for Player to select Loot...")
 	Events.wave_cleared.emit(current_wave)
-	print("[WaveManager] Wave ", current_wave, " Cleared!")
-	
-	get_tree().create_timer(2.0).timeout.connect(func(): state_chart.send_event("setup_next_wave"))

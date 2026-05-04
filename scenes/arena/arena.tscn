@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://hw1eyg10ioh3" path="res://assets/background/Ninja Adventure/TilesetFloor.png" id="11_bxbl0"]
 [ext_resource type="Texture2D" uid="uid://bt58jr7iab6lj" path="res://assets/background/Ninja Adventure/TilesetFloorDetail.png" id="13_o7rjm"]
 [ext_resource type="Texture2D" uid="uid://bwsmvlv7rymg7" path="res://assets/background/Ninja Adventure/TilesetHouse.png" id="14_xr6px"]
+[ext_resource type="PackedScene" uid="uid://bjc1euvt3s42d" path="res://scenes/ui/loot_screen.tscn" id="22_gy0qm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t3vx8"]
 
@@ -2960,3 +2961,5 @@ script = ExtResource("10_fv88w")
 to = NodePath("../../Waiting")
 event = &"setup_next_wave"
 delay_in_seconds = "0.0"
+
+[node name="LootScreen" parent="." unique_id=2002525306 instance=ExtResource("22_gy0qm")]

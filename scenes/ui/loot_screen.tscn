@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bjc1euvt3s42d"]
+
+[ext_resource type="Script" uid="uid://q5m3mympnw5w" path="res://scripts/ui/loot_screen.gd" id="1_ixchd"]
+
+[node name="LootScreen" type="CanvasLayer" unique_id=2002525306]
+layer = 100
+script = ExtResource("1_ixchd")
+metadata/_custom_type_script = "uid://q5m3mympnw5w"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=792089039]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2096139308]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=302131907]
+layout_mode = 2
+text = "Select an Upgrade"
+horizontal_alignment = 1
+
+[node name="CardsContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2083879905]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1742530330]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="RosterContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=543795116]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20

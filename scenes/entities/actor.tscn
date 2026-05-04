@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="9_6kqnj"]
 
 [node name="Actor" type="CharacterBody2D" unique_id=1678576432]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_vn088")
 
