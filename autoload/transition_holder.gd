@@ -1,5 +1,6 @@
-# TransitionHolder.gd (Autoload)
+#@ascii_only
 extends CanvasLayer
+# Autload for Transition handler
 
 var top_node: Node = null
 var bot_node: Node = null
