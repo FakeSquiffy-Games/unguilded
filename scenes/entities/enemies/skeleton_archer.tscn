@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dfucesjnabhjo"]
+
+[ext_resource type="PackedScene" uid="uid://c6c3htyc8nqre" path="res://scenes/entities/actor.tscn" id="1_lgxk3"]
+[ext_resource type="Script" uid="uid://bs3faquiioev" path="res://scripts/entities/enemies/skeleton_archer_brain.gd" id="2_xcawc"]
+[ext_resource type="SpriteFrames" uid="uid://dn3m6y3ofvb13" path="res://resources/frames/skeleton_archer_frames.tres" id="2_yr3qw"]
+[ext_resource type="Resource" uid="uid://cakrsulkl6hdo" path="res://resources/stat_blocks/skeleton_archer_stats.tres" id="3_ufv37"]
+[ext_resource type="PackedScene" uid="uid://c5d4ci535m5mo" path="res://scenes/projectiles/arrow.tscn" id="4_dpctk"]
+[ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="4_ufv37"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij46s"]
+radius = 50.0
+
+[sub_resource type="Resource" id="Resource_q4euf"]
+script = ExtResource("4_ufv37")
+projectile_scene = ExtResource("4_dpctk")
+collision_layer = 16
+collision_mask = 5
+energy_requirement = 0.0
+knockback_force = 350.0
+metadata/_custom_type_script = "uid://byisi4g83p2ta"
+
+[node name="SkeletonArcher" unique_id=1678576432 groups=["enemies"] instance=ExtResource("1_lgxk3")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=35610349]
+position = Vector2(-15, 0)
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("2_yr3qw")
+animation = &"attack"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=955450573]
+shape = SubResource("CircleShape2D_ij46s")
+
+[node name="StatManager" parent="." index="2" unique_id=1680576928]
+base_stats = ExtResource("3_ufv37")
+
+[node name="SkillHandler" parent="." index="3" unique_id=259889645]
+left_tap = SubResource("Resource_q4euf")
+
+[node name="SkeletonArcherBrain" type="Node" parent="." index="5" unique_id=1516494381]
+script = ExtResource("2_xcawc")
+metadata/_custom_type_script = "uid://bs3faquiioev"

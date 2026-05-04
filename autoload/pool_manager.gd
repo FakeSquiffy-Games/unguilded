@@ -24,6 +24,10 @@ func acquire(scene: PackedScene) -> Node:
 	return instance
 
 func release(instance: Node) -> void:
+	if not instance.has_meta("pool_scene"):
+		instance.queue_free()
+		return
+	
 	var scene = instance.get_meta("pool_scene") as PackedScene
 	if not scene or not _pools.has(scene.resource_path):
 		instance.queue_free()

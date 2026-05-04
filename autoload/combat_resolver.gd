@@ -19,10 +19,12 @@ func resolve(attacker_stats: StatBlock, skill: SkillCommand, defender_stats: Sta
 	# Future-proofing: Armor/Mitigation math would go here using defender_stats.
 	var final_damage: float = maxf(0.0, damage)
 	
-	# Determine Hitstun: If an attack hits with heavy force (>150), trigger a stun state.
-	var triggers_hitstun: bool = skill.knockback_force > 150.0
+	# Mitigate force based on defender's resistance
+	var resistance: float = defender_stats.knockback_resistance if defender_stats else 0.0
+	var actual_force: float = skill.knockback_force * maxf(0.0, 1.0 - resistance)
+	var applied_knockback: Vector2 = attack_direction.normalized() * actual_force
 	
-	# Apply directional vector to the raw knockback force
-	var applied_knockback: Vector2 = attack_direction.normalized() * skill.knockback_force
+	# Only trigger hitstun if the resulting force is still strong enough
+	var triggers_hitstun: bool = actual_force > 300.0 
 	
 	return CombatResult.new(final_damage, applied_knockback, triggers_hitstun)

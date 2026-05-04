@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="StatBlock" format=3 uid="uid://rcn5bgy53ub1"]
-
-[ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="1_qowit"]
-
-[resource]
-script = ExtResource("1_qowit")
-max_health = 50
-move_speed = 150.0
-metadata/_custom_type_script = "uid://c8wxhbgikceud"

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cjn87osxsr1qu"]
+
+[ext_resource type="PackedScene" uid="uid://c6c3htyc8nqre" path="res://scenes/entities/actor.tscn" id="1_adhc0"]
+[ext_resource type="Script" uid="uid://cifrti5b4cbdh" path="res://scripts/entities/enemies/slime_brain.gd" id="2_nie2d"]
+[ext_resource type="SpriteFrames" uid="uid://d0diem1tcnsnk" path="res://resources/frames/slime_frames.tres" id="2_ocj6w"]
+[ext_resource type="Resource" uid="uid://c4qwtvke45san" path="res://resources/stat_blocks/slime_stats.tres" id="3_b58ev"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ro2pj"]
+radius = 40.0
+
+[node name="Slime" unique_id=1678576432 groups=["enemies"] instance=ExtResource("1_adhc0")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=35610349]
+position = Vector2(5, -5)
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("2_ocj6w")
+animation = &"death"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=955450573]
+shape = SubResource("CircleShape2D_ro2pj")
+
+[node name="StatManager" parent="." index="2" unique_id=1680576928]
+base_stats = ExtResource("3_b58ev")
+
+[node name="SlimeBrain" type="Node" parent="." index="5" unique_id=755364423]
+script = ExtResource("2_nie2d")
+metadata/_custom_type_script = "uid://cifrti5b4cbdh"

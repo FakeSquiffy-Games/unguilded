@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_1qjuf"]
 [ext_resource type="Script" uid="uid://cbhlthod0nwgh" path="res://scripts/arena/arena.gd" id="1_8trdl"]
-[ext_resource type="PackedScene" uid="uid://vqv6gkcfvxrr" path="res://scenes/enemies/enemy_complex.tscn" id="3_5tue2"]
-[ext_resource type="PackedScene" uid="uid://xc8gy1obmayc" path="res://scenes/enemies/enemy_simple.tscn" id="4_aj7ud"]
+[ext_resource type="PackedScene" uid="uid://cjn87osxsr1qu" path="res://scenes/entities/enemies/slime.tscn" id="4_asdgj"]
+[ext_resource type="PackedScene" uid="uid://dfckeo65ssasg" path="res://scenes/arena/obstacle.tscn" id="5_asdgj"]
+[ext_resource type="PackedScene" uid="uid://dfucesjnabhjo" path="res://scenes/entities/enemies/skeleton_archer.tscn" id="5_jx0ua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8trdl"]
 size = Vector2(2200, 100)
@@ -90,8 +91,11 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_1qjuf")
 
-[node name="EnemyComplex" parent="." unique_id=2144712344 instance=ExtResource("3_5tue2")]
-position = Vector2(-809, -832)
+[node name="Obstacle" parent="." unique_id=625731086 instance=ExtResource("5_asdgj")]
+position = Vector2(168, -155)
 
-[node name="EnemySimple" parent="." unique_id=1483016287 instance=ExtResource("4_aj7ud")]
-position = Vector2(849, -819)
+[node name="Slime" parent="." unique_id=1678576432 instance=ExtResource("4_asdgj")]
+position = Vector2(633, -648)
+
+[node name="SkeletonArcher" parent="." unique_id=670517440 instance=ExtResource("5_jx0ua")]
+position = Vector2(-630, -640)

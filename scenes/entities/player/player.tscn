@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c4vy4onn64b3c"]
+
+[ext_resource type="PackedScene" uid="uid://c6c3htyc8nqre" path="res://scenes/entities/actor.tscn" id="1_qdyt2"]
+[ext_resource type="Resource" uid="uid://dh760056dhlk2" path="res://resources/stat_blocks/player_base_stats.tres" id="2_g2g7f"]
+[ext_resource type="Script" uid="uid://7s3f38i5enfq" path="res://scripts/components/party_manager.gd" id="3_fp13k"]
+[ext_resource type="Script" uid="uid://bnlfh6xndh8mi" path="res://scripts/entities/player/player_brain.gd" id="4_5bhx7"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_i174x"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_8bj4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75vfm"]
+radius = 50.0
+
+[sub_resource type="Resource" id="Resource_qek5x"]
+script = ExtResource("6_8bj4u")
+
+[node name="Player" unique_id=1678576432 groups=["player"] instance=ExtResource("1_qdyt2")]
+collision_mask = 4
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=35610349]
+position = Vector2(-5, 5)
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=955450573]
+shape = SubResource("CircleShape2D_75vfm")
+
+[node name="StatManager" parent="." index="2" unique_id=1680576928]
+base_stats = ExtResource("2_g2g7f")
+
+[node name="PartyManager" type="Node" parent="." index="5" unique_id=820081333]
+script = ExtResource("3_fp13k")
+metadata/_custom_type_script = "uid://7s3f38i5enfq"
+
+[node name="PlayerBrain" type="Node" parent="." index="6" unique_id=345773454]
+script = ExtResource("4_5bhx7")
+metadata/_custom_type_script = "uid://bnlfh6xndh8mi"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." index="7" unique_id=2133144798 node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("5_i174x")
+follow_mode = 2
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_qek5x")
+follow_damping = true
+follow_damping_value = Vector2(0.15, 0.15)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
