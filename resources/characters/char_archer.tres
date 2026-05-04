@@ -1,28 +1,32 @@
 [gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://qrm7mc62gees"]
 
 [ext_resource type="Resource" uid="uid://dpjioiqlmhn1q" path="res://resources/stat_blocks/archer_stats.tres" id="1_p2agx"]
+[ext_resource type="Script" uid="uid://g846cubkdhf8" path="res://scripts/skills/skill_command.gd" id="2_lg3cj"]
 [ext_resource type="PackedScene" uid="uid://c5d4ci535m5mo" path="res://scenes/projectiles/arrow.tscn" id="2_sl54k"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="3_p2agx"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_a6b1f"]
 [ext_resource type="SpriteFrames" uid="uid://cdjtnippfol3p" path="res://resources/frames/archer_frames.tres" id="5_p2agx"]
 
-[sub_resource type="Resource" id="Resource_0loeu"]
+[sub_resource type="Resource" id="Resource_ta1n3"]
 script = ExtResource("3_p2agx")
 projectile_scene = ExtResource("2_sl54k")
 fire_rate = 0.3
 skill_type = 1
 energy_requirement = 50.0
-base_regen = 5.0
+base_regen = 2.0
+metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
-[sub_resource type="Resource" id="Resource_bpi0h"]
+[sub_resource type="Resource" id="Resource_52cg8"]
 script = ExtResource("3_p2agx")
 projectile_scene = ExtResource("2_sl54k")
+base_damage = 20.0
 knockback_force = 350.0
+metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
 [resource]
 script = ExtResource("4_a6b1f")
 character_name = &"Archer"
 sprite_frames = ExtResource("5_p2agx")
 base_stats = ExtResource("1_p2agx")
-left_tap = SubResource("Resource_bpi0h")
-left_hold = SubResource("Resource_0loeu")
+left_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_52cg8")])
+left_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ta1n3")])

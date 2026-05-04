@@ -1,18 +1,19 @@
 class_name UpgradeData
 extends Resource
 
-enum UpgradeType { CHAR_STAT, SKILL_SLOT, CHAR_ACQUISITION }
+enum UpgradeType { SLOT_UPGRADE, CHAR_STAT, CHAR_UNLOCK }
 
 @export var upgrade_id: StringName = &"unnamed_upgrade"
 @export var upgrade_type: UpgradeType = UpgradeType.CHAR_STAT
 @export var display_name: String = "Upgrade"
 @export_multiline var description: String = ""
 
-@export_group("Stat Modifier")
-## Only used if upgrade_type is CHAR_STAT
+@export_group("Payload Data")
+## Used if SLOT_UPGRADE (e.g., "left_tap", "left_hold")
+@export var target_slot: String = "" 
+
+## Used if CHAR_STAT
 @export var stat_modifier: StatBlock
 
-@export_group("Unlock Targets")
-## Only used if upgrade_type is SKILL_SLOT or CHAR_ACQUISITION
-@export var target_char_id: StringName = &""
-@export var target_skill_slot: StringName = &""
+## Used if CHAR_UNLOCK
+@export var character_data: CharacterData

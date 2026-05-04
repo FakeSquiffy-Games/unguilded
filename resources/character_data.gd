@@ -5,8 +5,8 @@ extends Resource
 @export var sprite_frames: SpriteFrames
 @export var base_stats: StatBlock
 
-@export_group("Skills")
-@export var left_tap: SkillCommand
-@export var left_hold: SkillCommand
-@export var right_tap: SkillCommand
-@export var right_hold: SkillCommand
+@export_group("Skill Tiers (Level 1, Level 2, etc.)")
+@export var left_tap_tiers: Array[SkillCommand] = []
+@export var left_hold_tiers: Array[SkillCommand] =[]
+@export var right_tap_tiers: Array[SkillCommand] =[]
+@export var right_hold_tiers: Array[SkillCommand] =[]
