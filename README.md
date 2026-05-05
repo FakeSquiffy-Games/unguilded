@@ -1,6 +1,8 @@
-# About `cmsc-197-gdd-mp3`
+# About `unguilded`
 
-![Gif of title screen](https://github.com/user-attachments/assets/ab19ee40-1968-431f-89ce-2b896d7a014a)
+<img width="1292" height="724" alt="Recording 2026-05-05 191958 (1)" src="https://github.com/user-attachments/assets/a8cccc9f-a712-4d1a-8c4c-794ab33f546d" />
+
+
 
 # Creator
 - Keith Ashly M. Domingo
@@ -11,16 +13,16 @@
 # Description
 
 ## Summary
-**`cmsc-197-gdd-mp3`** is 
+**`unguilded`** is 
 
 ## Rationale
-**`cmsc-197-gdd-mp3`** is a *Vampire Survivors clone* with a twist, created as the third machine problem for CMSC 197 - Game Design and Development. To challenge the student's creativity and ingenuity, they were given a task to take an already existing game, analyze its game design, and create a unique recreation of the game while being restricted to keep the major features of the original game.
+**`unguilded`** is a *Vampire Survivors clone* with a twist, created as the third machine problem for CMSC 197 - Game Design and Development. To challenge the student's creativity and ingenuity, they were given a task to take an already existing game, analyze its game design, and create a unique recreation of the game while being restricted to keep the major features of the original game.
 
 ## The Twist: 
 
 # Features
 
-**`cmsc-197-gdd-mp3`** offers both unique mechanics and some from the original *Vampire Survivors*:
+**`unguilded`** offers both unique mechanics and some from the original *Vampire Survivors*:
 
 
 # Game Mechanic
@@ -54,7 +56,7 @@ A direct link to each respective download is provided in [CREDITS.md](CREDITS.md
 Sprites not credited were custom-built by the creators and are free for personal, non-commercial use.
 
 # Getting Started: Players
-To properly try and experience **`cmsc-197-gdd-mp3`**, follow these steps:
+To properly try and experience **`unguilded`**, follow these steps:
 1. Download the exe file in the [releases section]() of the repository.
 2. Run the exe and enjoy the game!
 
