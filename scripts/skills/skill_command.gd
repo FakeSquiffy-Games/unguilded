@@ -6,6 +6,7 @@ enum SkillType { TAP, HOLD_CONTINUOUS, HOLD_CHARGE }
 
 @export var skill_id: StringName = &"base_skill"
 @export var skill_type: SkillType = SkillType.TAP
+@export var icon: Texture2D
 
 @export_group("Energy Mechanics")
 @export var energy_requirement: float = 100.0 # Cost to fire Tap/Charge, or Drain-Per-Second for Continuous

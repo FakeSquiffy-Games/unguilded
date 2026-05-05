@@ -63,6 +63,7 @@ func _process(_delta: float) -> void:
 func _update_health() -> void:
 	if not _player: return
 	health_bar.value = _player.current_health
+	print(_player.current_health)
 
 # ── Cooldowns + skill icons ───────────────────────────────────────────────────
 

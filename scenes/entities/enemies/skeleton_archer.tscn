@@ -15,13 +15,12 @@ script = ExtResource("4_ufv37")
 projectile_scene = ExtResource("4_c20nt")
 collision_layer = 16
 collision_mask = 5
-energy_requirement = 0.0
 knockback_force = 350.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
 [node name="SkeletonArcher" unique_id=1678576432 groups=["enemies"] instance=ExtResource("1_lgxk3")]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=35610349]
 position = Vector2(-15, 0)

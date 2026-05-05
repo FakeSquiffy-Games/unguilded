@@ -1,45 +1,56 @@
-[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://qrm7mc62gees"]
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://dwyxiahbgd5st"]
 
 [ext_resource type="Resource" uid="uid://dpjioiqlmhn1q" path="res://resources/stat_blocks/archer_stats.tres" id="1_p2agx"]
 [ext_resource type="Script" uid="uid://g846cubkdhf8" path="res://scripts/skills/skill_command.gd" id="2_lg3cj"]
+[ext_resource type="Texture2D" uid="uid://pp64qeglls2t" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Kunai.png" id="3_ije5a"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="3_p2agx"]
+[ext_resource type="PackedScene" uid="uid://drnu6sgy48di" path="res://scenes/projectiles/player_arrow.tscn" id="3_re1c7"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_a6b1f"]
 [ext_resource type="SpriteFrames" uid="uid://cdjtnippfol3p" path="res://resources/frames/archer_frames.tres" id="5_p2agx"]
 [ext_resource type="Texture2D" uid="uid://dtmorsopgwf58" path="res://assets/hud/Tiny RPG Character Asset Pack v1.03/archer.png" id="5_ta1n3"]
+[ext_resource type="Texture2D" uid="uid://dd5prc5e34qe" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Arrow.png" id="6_2gvys"]
+[ext_resource type="PackedScene" uid="uid://dxx788wy1c3ie" path="res://scenes/projectiles/golden_arrow.tscn" id="6_i5rdd"]
+[ext_resource type="Script" uid="uid://oil3kb8qfjhb" path="res://scripts/skills/commands/movement_command.gd" id="7_284u6"]
+[ext_resource type="Texture2D" uid="uid://ba7sspce33vqb" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Shuriken.png" id="8_gmrdn"]
+[ext_resource type="Texture2D" uid="uid://dqnvoc3ce8e1" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Hook.png" id="10_eu1sn"]
 
-[sub_resource type="Resource" id="Resource_ta1n3"]
+[sub_resource type="Resource" id="Resource_5bdi4"]
 script = ExtResource("3_p2agx")
-projectile_scene = ExtResource("5_re1c7")
+projectile_scene = ExtResource("3_re1c7")
 projectile_count = 3
 spread_angle = 30.0
 skill_type = 2
+icon = ExtResource("3_ije5a")
 base_regen = 10.0
 base_damage = 20.0
 knockback_force = 325.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
-[sub_resource type="Resource" id="Resource_52cg8"]
+[sub_resource type="Resource" id="Resource_ije5a"]
 script = ExtResource("3_p2agx")
-projectile_scene = ExtResource("5_re1c7")
+projectile_scene = ExtResource("3_re1c7")
+icon = ExtResource("6_2gvys")
 base_damage = 40.0
 knockback_force = 350.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
-[sub_resource type="Resource" id="Resource_284u6"]
+[sub_resource type="Resource" id="Resource_2gvys"]
 script = ExtResource("3_p2agx")
 projectile_scene = ExtResource("6_i5rdd")
 speed = 1000.0
 is_piercing = true
 skill_type = 2
+icon = ExtResource("8_gmrdn")
 base_regen = 1.0
 base_damage = 100.0
 knockback_force = 500.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
 
-[sub_resource type="Resource" id="Resource_ti2er"]
-script = ExtResource("5_ta1n3")
+[sub_resource type="Resource" id="Resource_gmrdn"]
+script = ExtResource("7_284u6")
 dash_speed = 700.0
 direction_type = 1
+icon = ExtResource("10_eu1sn")
 base_damage = 0.0
 knockback_force = 0.0
 grants_iframes = true
@@ -51,7 +62,8 @@ character_name = &"Archer"
 sprite_frames = ExtResource("5_p2agx")
 base_stats = ExtResource("1_p2agx")
 portrait = ExtResource("5_ta1n3")
-left_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_52cg8")])
-left_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ta1n3")])
-right_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ti2er")])
-right_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_284u6")])
+left_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_ije5a")])
+left_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_5bdi4")])
+right_tap_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_gmrdn")])
+right_hold_tiers = Array[ExtResource("2_lg3cj")]([SubResource("Resource_2gvys")])
+metadata/_custom_type_script = "uid://bspyq1k51lov"

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="2_un86y"]
 [ext_resource type="Script" uid="uid://bin0i5r3m32id" path="res://scripts/skills/commands/aoe_command.gd" id="3_77dwt"]
 [ext_resource type="PackedScene" uid="uid://ch47wtn718v32" path="res://scenes/projectiles/aoe_zone.tscn" id="4_tsxme"]
+[ext_resource type="Texture2D" uid="uid://crvkvu4e27fb3" path="res://assets/hud/Tiny RPG Character Asset Pack v1.03/priest.png" id="5_77dwt"]
 [ext_resource type="Script" uid="uid://c8wxhbgikceud" path="res://resources/stat_block.gd" id="5_qmlkh"]
 [ext_resource type="Script" uid="uid://ko4dgc7psvca" path="res://scripts/skills/commands/buff_command.gd" id="6_jqc70"]
 [ext_resource type="SpriteFrames" uid="uid://dk16dg7oysa2c" path="res://resources/frames/priest_frames.tres" id="8_63qd4"]
@@ -38,6 +39,7 @@ script = ExtResource("2_un86y")
 character_name = &"Priest"
 sprite_frames = ExtResource("8_63qd4")
 base_stats = ExtResource("1_wph78")
+portrait = ExtResource("5_77dwt")
 left_hold_tiers = Array[ExtResource("1_3bo00")]([SubResource("Resource_12ftv")])
 right_hold_tiers = Array[ExtResource("1_3bo00")]([SubResource("Resource_wph78")])
 metadata/_custom_type_script = "uid://bspyq1k51lov"

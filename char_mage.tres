@@ -3,19 +3,16 @@
 [ext_resource type="Resource" uid="uid://cxesqoynqsxi0" path="res://resources/stat_blocks/mage_stats.tres" id="1_45s7j"]
 [ext_resource type="Script" uid="uid://g846cubkdhf8" path="res://scripts/skills/skill_command.gd" id="2_od0ls"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="3_45s7j"]
-[ext_resource type="Texture2D" uid="uid://3qkl7g87i5ae" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/BookFire.png" id="3_ks01y"]
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="4_sajg6"]
 [ext_resource type="PackedScene" uid="uid://s2b0evf7ypmu" path="res://scenes/projectiles/fireball.tscn" id="4_uoagk"]
 [ext_resource type="Texture2D" uid="uid://c24ged3y2q1f7" path="res://assets/hud/Tiny RPG Character Asset Pack v1.03/wizard.png" id="5_5ivp0"]
 [ext_resource type="SpriteFrames" uid="uid://dvkx8gdmq16m6" path="res://resources/frames/mage_frames.tres" id="5_45s7j"]
-[ext_resource type="Texture2D" uid="uid://ce7pohdtl0m6i" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/Fireball.png" id="6_ufc51"]
 
 [sub_resource type="Resource" id="Resource_uoagk"]
 script = ExtResource("3_45s7j")
 projectile_scene = ExtResource("4_uoagk")
 fire_rate = 0.3
 skill_type = 1
-icon = ExtResource("3_ks01y")
 energy_requirement = 50.0
 base_regen = 5.0
 base_damage = 20.0
@@ -27,7 +24,6 @@ metadata/_custom_type_script = "uid://byisi4g83p2ta"
 [sub_resource type="Resource" id="Resource_5ivp0"]
 script = ExtResource("3_45s7j")
 projectile_scene = ExtResource("4_uoagk")
-icon = ExtResource("6_ufc51")
 base_damage = 30.0
 startup_frames = 9
 active_frames = 3

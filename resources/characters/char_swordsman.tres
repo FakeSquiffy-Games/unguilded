@@ -5,15 +5,21 @@
 [ext_resource type="Script" uid="uid://bspyq1k51lov" path="res://resources/character_data.gd" id="2_by6a1"]
 [ext_resource type="SpriteFrames" uid="uid://dhf20kropw0qo" path="res://resources/frames/swordsman_frames.tres" id="3_by6a1"]
 [ext_resource type="PackedScene" uid="uid://dmtj13ucluh8e" path="res://scenes/projectiles/hitbox.tscn" id="3_egaen"]
+[ext_resource type="Texture2D" uid="uid://bk4cvpod3q5bd" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Guard.png" id="4_garhy"]
 [ext_resource type="Script" uid="uid://cfg74m1w04byr" path="res://scripts/skills/commands/melee_command.gd" id="4_px36t"]
 [ext_resource type="Script" uid="uid://oil3kb8qfjhb" path="res://scripts/skills/commands/movement_command.gd" id="5_egaen"]
 [ext_resource type="PackedScene" uid="uid://mwivsd0wu5p3" path="res://scenes/projectiles/slice.tscn" id="5_q3mnf"]
+[ext_resource type="Texture2D" uid="uid://cy62pyeljg0sy" path="res://assets/hud/Tiny RPG Character Asset Pack v1.03/knight.png" id="5_tj1x4"]
+[ext_resource type="Texture2D" uid="uid://ik54xpyg1hai" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/AttackUpgrade.png" id="6_jqo8l"]
 [ext_resource type="Script" uid="uid://byisi4g83p2ta" path="res://scripts/skills/commands/projectile_command.gd" id="6_tj1x4"]
+[ext_resource type="Texture2D" uid="uid://brqrfeud20xuu" path="res://assets/hud/Ninja Adventure/Skill Icon/Meteo/Moon.png" id="8_mw5wr"]
+[ext_resource type="Texture2D" uid="uid://c5olvi1qttn1n" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Boot.png" id="11_exjh1"]
 
 [sub_resource type="Resource" id="Resource_u8e2s"]
 script = ExtResource("4_px36t")
 hitbox_scene = ExtResource("3_egaen")
 skill_type = 1
+icon = ExtResource("4_garhy")
 base_regen = 10.0
 move_speed_multiplier = 1.5
 grants_iframes = true
@@ -23,6 +29,7 @@ metadata/_custom_type_script = "uid://cfg74m1w04byr"
 script = ExtResource("4_px36t")
 hitbox_scene = ExtResource("3_egaen")
 hitbox_offset = 100.0
+icon = ExtResource("6_jqo8l")
 metadata/_custom_type_script = "uid://cfg74m1w04byr"
 
 [sub_resource type="Resource" id="Resource_hal2p"]
@@ -31,6 +38,7 @@ projectile_scene = ExtResource("5_q3mnf")
 speed = 600.0
 is_piercing = true
 skill_type = 2
+icon = ExtResource("8_mw5wr")
 base_regen = 10.0
 base_damage = 80.0
 knockback_force = 500.0
@@ -39,6 +47,7 @@ metadata/_custom_type_script = "uid://byisi4g83p2ta"
 [sub_resource type="Resource" id="Resource_px36t"]
 script = ExtResource("5_egaen")
 dash_speed = 1000.0
+icon = ExtResource("11_exjh1")
 grants_iframes = true
 metadata/_custom_type_script = "uid://oil3kb8qfjhb"
 
@@ -47,6 +56,7 @@ script = ExtResource("2_by6a1")
 character_name = &"Swordsman"
 sprite_frames = ExtResource("3_by6a1")
 base_stats = ExtResource("1_u8e2s")
+portrait = ExtResource("5_tj1x4")
 left_tap_tiers = Array[ExtResource("1_0t76l")]([SubResource("Resource_egaen")])
 left_hold_tiers = Array[ExtResource("1_0t76l")]([SubResource("Resource_u8e2s")])
 right_tap_tiers = Array[ExtResource("1_0t76l")]([SubResource("Resource_px36t")])

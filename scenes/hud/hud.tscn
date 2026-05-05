@@ -14,16 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://cfp4qbe8nn3ou" path="res://assets/tutorial/Ninja Adventure/Key2.png" id="10_8nkf1"]
 [ext_resource type="Texture2D" uid="uid://dixdxfu6fy86y" path="res://assets/tutorial/Ninja Adventure/Key1.png" id="11_558d4"]
 [ext_resource type="Texture2D" uid="uid://cgey7mismrc3a" path="res://assets/tutorial/Ninja Adventure/Key3.png" id="12_4m1a1"]
-[ext_resource type="Texture2D" uid="uid://dbtucx1wq23qh" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/ArrowDisabled.png" id="12_bluaa"]
+[ext_resource type="Texture2D" uid="uid://cd73vsdgpqfqg" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/OrbDisabled.png" id="12_udak2"]
 [ext_resource type="Texture2D" uid="uid://cesauyl267b8g" path="res://assets/hud/Ninja Adventure/Mouse/MouseButtonRight.png" id="13_4m1a1"]
-[ext_resource type="Texture2D" uid="uid://dd5prc5e34qe" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Arrow.png" id="13_bbrgr"]
-[ext_resource type="Texture2D" uid="uid://bdfptw5vv83jn" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/KunaiDisabled.png" id="14_3fmw6"]
+[ext_resource type="Texture2D" uid="uid://ce7pohdtl0m6i" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/Fireball.png" id="13_udak2"]
 [ext_resource type="Texture2D" uid="uid://b0qchgu4hg3mk" path="res://assets/hud/Ninja Adventure/Mouse/MouseButtonLeft.png" id="14_iioc1"]
-[ext_resource type="Texture2D" uid="uid://pp64qeglls2t" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Kunai.png" id="15_2dqaf"]
-[ext_resource type="Texture2D" uid="uid://bv8sxilu0mu1k" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/HookDisabled.png" id="16_4vn1o"]
+[ext_resource type="Texture2D" uid="uid://3qkl7g87i5ae" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/BookFire.png" id="14_udak2"]
+[ext_resource type="Texture2D" uid="uid://bdo7scjl6gch6" path="res://assets/hud/Ninja Adventure/Skill Icon/Spell/Alchemy.png" id="16_udak2"]
 [ext_resource type="Texture2D" uid="uid://dqnvoc3ce8e1" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Hook.png" id="17_pjbv8"]
-[ext_resource type="Texture2D" uid="uid://c7h3qe53gping" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/MoneyDisabled.png" id="18_eiuad"]
-[ext_resource type="Texture2D" uid="uid://1lagjrxr2bsm" path="res://assets/hud/Ninja Adventure/Skill Icon/Items & Weapon/Money.png" id="19_ncrl3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgeww"]
 texture = ExtResource("1_48c2t")
@@ -1921,6 +1918,7 @@ grow_vertical = 2
 script = ExtResource("1_567j1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=822582799]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1969,7 +1967,6 @@ offset_top = 896.0
 offset_right = 913.00006
 offset_bottom = 928.0
 scale = Vector2(5, 5)
-min_value = 100.0
 value = 100.0
 fill_mode = 3
 texture_under = ExtResource("2_go0ap")
@@ -2020,8 +2017,8 @@ offset_right = 612.0
 offset_bottom = 948.0
 scale = Vector2(5, 5)
 fill_mode = 3
-texture_under = ExtResource("12_bluaa")
-texture_progress = ExtResource("13_bbrgr")
+texture_under = ExtResource("12_udak2")
+texture_progress = ExtResource("13_udak2")
 
 [node name="CooldownLeftHold" type="TextureProgressBar" parent="." unique_id=762321534]
 layout_mode = 0
@@ -2031,8 +2028,8 @@ offset_right = 756.00006
 offset_bottom = 948.0
 scale = Vector2(5, 5)
 fill_mode = 3
-texture_under = ExtResource("14_3fmw6")
-texture_progress = ExtResource("15_2dqaf")
+texture_under = ExtResource("12_udak2")
+texture_progress = ExtResource("14_udak2")
 
 [node name="CooldownRightTap" type="TextureProgressBar" parent="." unique_id=595598918]
 layout_mode = 0
@@ -2042,7 +2039,7 @@ offset_right = 1091.9999
 offset_bottom = 948.0
 scale = Vector2(5, 5)
 fill_mode = 3
-texture_under = ExtResource("16_4vn1o")
+texture_under = ExtResource("12_udak2")
 texture_progress = ExtResource("17_pjbv8")
 
 [node name="CooldownRightHold" type="TextureProgressBar" parent="." unique_id=841712810]
@@ -2053,8 +2050,8 @@ offset_right = 1236.0
 offset_bottom = 948.0
 scale = Vector2(5, 5)
 fill_mode = 3
-texture_under = ExtResource("18_eiuad")
-texture_progress = ExtResource("19_ncrl3")
+texture_under = ExtResource("12_udak2")
+texture_progress = ExtResource("16_udak2")
 
 [node name="IconLeftTap" type="Sprite2D" parent="." unique_id=1806069346]
 
