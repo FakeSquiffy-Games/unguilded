@@ -15,6 +15,7 @@ script = ExtResource("4_ufv37")
 projectile_scene = ExtResource("4_c20nt")
 collision_layer = 16
 collision_mask = 5
+base_regen = 75.0
 knockback_force = 350.0
 metadata/_custom_type_script = "uid://byisi4g83p2ta"
 

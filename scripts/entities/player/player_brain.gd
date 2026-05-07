@@ -24,9 +24,9 @@ func _ready() -> void:
 	)
 	
 	# Load Test Party
-	party_manager.add_character(load("res://resources/characters/char_archer.tres"))
+	#party_manager.add_character(load("res://resources/characters/char_archer.tres"))
 	#party_manager.add_character(load("res://resources/characters/char_mage.tres"))
-	#party_manager.add_character(load("res://resources/characters/char_swordsman.tres"))
+	party_manager.add_character(load("res://resources/characters/char_swordsman.tres"))
 	#party_manager.add_character(load("res://resources/characters/char_priest.tres"))
 
 func _physics_process(delta: float) -> void:

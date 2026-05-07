@@ -28,8 +28,8 @@ const UNAVAILABLE_THRESHOLD: float = 10.0
 const DIMMED_COLOR: Color = Color(0.25, 0.25, 0.25, 1.0)
 
 func _ready() -> void:
-	print(get_parent().name)
-	print(get_parent().get_children())
+	#print(get_parent().name)
+	#print(get_parent().get_children())
 	var portrait_size := Vector2(96, 96)
 	for bar in [slot_1, slot_2, slot_3]:
 		if bar:
@@ -63,7 +63,7 @@ func _process(_delta: float) -> void:
 func _update_health() -> void:
 	if not _player: return
 	health_bar.value = _player.current_health
-	print(_player.current_health)
+	#print(_player.current_health)
 
 # ── Cooldowns + skill icons ───────────────────────────────────────────────────
 

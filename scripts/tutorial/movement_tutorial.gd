@@ -18,7 +18,7 @@ var _tween: Tween
 func _ready() -> void:
 	position = HOVER_OFFSET
 	modulate.a = 1.0
-	print(key_w, key_a, key_s, key_d)
+	#print(key_w, key_a, key_s, key_d)
 
 func _process(delta: float) -> void:
 	if _has_faded:
